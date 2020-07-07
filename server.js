@@ -7,7 +7,7 @@ const projectsRouter = require('./controllers/projects.js');
 // Config
 const app = express();
 const db = mongoose.connection;
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const mongodbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + 'pragmatic';
 
 // Connect to MongoDB via Mongoose
@@ -26,4 +26,4 @@ app.use(express.urlencoded({extended: true}));
 app.use('/projects', projectsRouter);
 
 // Listener
-app.listen(port, ()=> console.log(`Listening on port: ${port}`));
+app.listen(PORT, ()=> console.log(`Listening on port: ${PORT}`));
