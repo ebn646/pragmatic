@@ -20,6 +20,9 @@
     <p>Epic: <%= issue.epic %></p>
     <p>Project: <%= issue.project %></p>
     <a href="/projects/issues/<%= issue.id %>/edit">Edit</a>
+    <form action="/projects/issues/<%= issue.id %>?_method=DELETE" method="post">
+      <input type="submit" value="Delete">
+    </form>
   </main>
 </body>
 </html>
