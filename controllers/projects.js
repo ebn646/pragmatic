@@ -22,6 +22,11 @@ router.get('/', async (req, res) => {
   });
 });
 
+router.post('/issues', async (req, res) => {
+  await Issue.create(req.body);
+  res.redirect('/projects');
+});
+
 router.get('/issues/new', (req, res) => {
   res.render('projects/new.ejs');
 });
