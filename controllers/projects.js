@@ -7,8 +7,11 @@ const seed = require('../models/issueSeed.js');
 const router = express.Router();
 
 // Routes
-router.get('/', (req, res) => {
-  res.render('projects/index.ejs');
+router.get('/', async (req, res) => {
+  const issues = await Issue.find({});
+  res.render('projects/index.ejs', {
+    issues: issues
+  });
 });
 
 // FOR TESTING PURPOSES
