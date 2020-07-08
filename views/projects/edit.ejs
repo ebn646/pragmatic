@@ -10,7 +10,7 @@
     <h1>Edit Issue</h1>
   </header>
   <main>
-    <form action="/projects/issues" method="post">
+    <form action="/projects/issues/<%= id %>?_method=PUT" method="post">
       <input type="text" id="title" name="title" placeholder="What needs to be done?" required>
       <br>
       <label for="description">

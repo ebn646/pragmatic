@@ -38,8 +38,16 @@ router.get('/issues/:id', async (req, res) => {
   });
 });
 
+router.put('/issues/:id', async (req, res) => {
+  const id = req.params.id;
+  await Issue.findByIdAndUpdate(id, req.body);
+  res.redirect(`/projects/issues/${id}`);
+});
+
 router.get('/issues/:id/edit', async (req, res) => {
-  res.render('projects/edit.ejs');
+  res.render('projects/edit.ejs', {
+    id: req.params.id
+  });
 });
 
 // Export router
