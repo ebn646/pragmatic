@@ -31,18 +31,18 @@ router.get('/issues/new', (req, res) => {
   res.render('projects/new.ejs');
 });
 
-router.get('/issues/:id', async (req, res) => {
-  const issue = await Issue.findById(req.params.id);
-  res.render('projects/show.ejs', {
-    issue: issue
+router.route('/issues/:id')
+  .get(async (req, res) => {
+    const issue = await Issue.findById(req.params.id);
+    res.render('projects/show.ejs', {
+      issue: issue
+    });
+  })
+  .put(async (req, res) => {
+    const id = req.params.id;
+    await Issue.findByIdAndUpdate(id, req.body);
+    res.redirect(`/projects/issues/${id}`);
   });
-});
-
-router.put('/issues/:id', async (req, res) => {
-  const id = req.params.id;
-  await Issue.findByIdAndUpdate(id, req.body);
-  res.redirect(`/projects/issues/${id}`);
-});
 
 router.get('/issues/:id/edit', async (req, res) => {
   res.render('projects/edit.ejs', {
