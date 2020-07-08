@@ -3,9 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit</title>
+  <title>Edit Issue</title>
 </head>
 <body>
-  <h1>This is the edit page</h1>
+  <header>
+    <h1>Edit Issue</h1>
+  </header>
+  <main>
+    <form action="/projects/issues" method="post">
+      <input type="text" id="title" name="title" placeholder="What needs to be done?" required>
+      <br>
+      <label for="description">
+        Description:
+        <input type="text" id="description" name="description">
+      </label>
+      <br>
+      <label for="issueType">
+        Issue type:
+        <input type="text" id="issueType" name="issueType">
+      </label>
+      <br>
+      <label for="reporter">
+        Reporter:
+        <input type="text" id="reporter" name="reporter">
+      </label>
+      <br>
+      <label for="assignee">
+        Assignee:
+        <input type="text" id="assignee" name="assignee">
+      </label>
+      <br>
+      <label for="priority">
+        Priority:
+        <input type="text" id="priority" name="priority">
+      </label>
+      <br>
+      <label for="storyPoints">
+        Story points:
+        <input type="number" id="storyPoints" name="storyPoints">
+      </label>
+      <br>
+      <label for="epic">
+        Epic:
+        <input type="text" id="epic" name="epic">
+      </label>
+      <br>
+      <label for="project">
+        Project:
+        <input type="text" id="project" name="project">
+      </label>
+      <br>
+      <input type="submit">
+    </form>
+  </main>
 </body>
 </html>
