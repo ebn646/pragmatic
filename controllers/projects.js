@@ -44,7 +44,7 @@ router.route('/issues/:id')
     res.redirect(`/projects/issues/${id}`);
   })
   .delete(async (req, res) => {
-    await Issue.findByIdAndRemove(req.params.id);
+    await Issue.findByIdAndRemove(req.params.id, {useFindAndModify: false});
     res.redirect('/projects');
   });
 
