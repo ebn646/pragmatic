@@ -22,6 +22,10 @@ router.get('/', async (req, res) => {
   });
 });
 
+router.get('/issues/new', (req, res) => {
+  res.render('projects/new.ejs');
+});
+
 router.get('/issues/:id', async (req, res) => {
   const issue = await Issue.findById(req.params.id);
   res.render('projects/show.ejs', {
