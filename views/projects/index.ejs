@@ -13,7 +13,7 @@
     <h2>Backlog</h2>
     <ul>
       <% issues.forEach(issue => { %>
-        <li><a href="#"><%= issue.title %></a></li>
+        <li><a href="/projects/issues/<%= issue.id %>"><%= issue.title %></a></li>
       <% }) %>
     </ul>
   </main>

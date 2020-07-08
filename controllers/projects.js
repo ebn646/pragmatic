@@ -7,6 +7,14 @@ const seed = require('../models/issueSeed.js');
 const router = express.Router();
 
 // Routes
+
+// FOR TESTING PURPOSES
+router.get('/seed', async (req, res) => {
+  await Issue.collection.drop();
+  await Issue.create(seed);
+  res.redirect('/projects');
+});
+
 router.get('/', async (req, res) => {
   const issues = await Issue.find({});
   res.render('projects/index.ejs', {
@@ -14,11 +22,11 @@ router.get('/', async (req, res) => {
   });
 });
 
-// FOR TESTING PURPOSES
-router.get('/seed', async (req, res) => {
-  await Issue.collection.drop();
-  await Issue.create(seed);
-  res.redirect('/projects');
+router.get('/issues/:id', async (req, res) => {
+  const issue = await Issue.findById(req.params.id);
+  res.render('projects/show.ejs', {
+    issue: issue
+  });
 });
 
 // Export router
