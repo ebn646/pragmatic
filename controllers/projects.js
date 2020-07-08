@@ -8,7 +8,7 @@ const router = express.Router();
 
 // Routes
 router.get('/', (req, res) => {
-  res.send('Hello world!');
+  res.render('projects/index.ejs');
 });
 
 // FOR TESTING PURPOSES
