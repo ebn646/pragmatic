@@ -38,5 +38,9 @@ router.get('/issues/:id', async (req, res) => {
   });
 });
 
+router.get('/issues/:id/edit', async (req, res) => {
+  res.render('projects/edit.ejs');
+});
+
 // Export router
 module.exports = router;
