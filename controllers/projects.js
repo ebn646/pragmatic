@@ -42,6 +42,10 @@ router.route('/issues/:id')
     const id = req.params.id;
     await Issue.findByIdAndUpdate(id, req.body);
     res.redirect(`/projects/issues/${id}`);
+  })
+  .delete(async (req, res) => {
+    await Issue.findByIdAndRemove(req.params.id);
+    res.redirect('/projects');
   });
 
 router.get('/issues/:id/edit', async (req, res) => {
