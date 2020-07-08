@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 router.get('/seed', async (req, res) => {
   await Issue.collection.drop();
   await Issue.create(seed);
-  res.send('Seeding complete!');
+  res.redirect('/projects');
 });
 
 // Export router
