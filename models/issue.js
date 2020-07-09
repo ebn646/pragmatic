@@ -13,7 +13,7 @@ const issueSchema = new mongoose.Schema(
     storyPoints: {type: Number, default: null},
     epic: {type: String, default: null},
     project: String
-  }
+  }, {timestamps: true}
 );
 
 // Model
