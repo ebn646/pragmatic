@@ -41,6 +41,10 @@ app.use('/projects', projectsRouter);
 app.get('/', (req, res) => {
   res.redirect('/boards');
 });
+app.get('/logout', async (req, res) => {
+  await req.session.destroy();
+  res.redirect('/');
+});
 
 // Listener
 app.listen(PORT, ()=> console.log(`Listening on port: ${PORT}`));
