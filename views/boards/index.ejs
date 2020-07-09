@@ -2,8 +2,11 @@
 <html lang="en">
 <%- include('../partials/head.ejs') %>
 <body>
-  <main>
+  <header>
+    <%- include('../partials/nav.ejs') %>
     <h1>Boards</h1>
+  </header>
+  <main>
     <% boards.forEach(board => { %>
       <li><a href="/boards/key/<%= board.key %>"><%= board.name %></a></li>
     <% }) %>
