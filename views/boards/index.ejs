@@ -8,7 +8,10 @@
 <body>
   <main>
     <h1>Boards</h1>
-
+    <% boards.forEach(board => { %>
+      <li><a href="#"><%= board.name %></a></li>
+    <% }) %>
+    <a href="/boards/new">Create board</a>
   </main>
 </body>
 </html>

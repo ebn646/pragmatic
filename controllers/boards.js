@@ -15,8 +15,21 @@ const isAuthenticated = (req, res, next) => {
 };
 
 // Routes
-router.get('/', isAuthenticated, (req, res) => {
-  res.render('boards/index.ejs');
+router.route('/')
+  .get(isAuthenticated, async (req, res) => {
+    const boards = await Board.find({userId: req.session.user._id});
+    res.render('boards/index.ejs', {
+      boards: boards
+    });
+  })
+  .post(isAuthenticated, async (req, res) => {
+    req.body.userId = req.session.user._id;
+    await Board.create(req.body).catch(err => console.log(err.message));
+    res.redirect('/boards');
+  });
+
+router.get('/new', isAuthenticated, (req, res) => {
+  res.render('boards/new.ejs');
 });
 
 // Export router
