@@ -2,6 +2,9 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+const session = require('express-session');
+require('dotenv').config();
+
 const projectsRouter = require('./controllers/projects.js');
 const signupRouter = require('./controllers/signup.js');
 const loginRouter = require('./controllers/login.js');
@@ -23,6 +26,11 @@ db.on('open', () => console.log('Connection open'));
 app.use(methodOverride('_method')); // allow POST, PUT, and DELETE methods on HTML form
 app.use(express.static('public')); // serve static files on public folder
 app.use(express.urlencoded({extended: true}));
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
 
 // Routers
 app.use('/signup', signupRouter);
