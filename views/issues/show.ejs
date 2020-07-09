@@ -10,7 +10,7 @@
     <h1>Issues</h1>
   </header>
   <main>
-    <a href="/projects">Back</a>
+    <a href="<%= baseUrl %>">Back</a>
     <h2><%= issue.title %></h2>
     <p>Description: <%= issue.description %></p>
     <p>Reporter: <%= issue.reporter %></p>
@@ -19,8 +19,8 @@
     <p>Story points: <%= issue.storyPoints %></p>
     <p>Epic: <%= issue.epic %></p>
     <p>Project: <%= issue.project %></p>
-    <a href="/projects/issues/<%= issue.id %>/edit">Edit</a>
-    <form action="/projects/issues/<%= issue.id %>?_method=DELETE" method="post">
+    <a href="<%= baseUrl %>/issues/<%= issue.id %>/edit">Edit</a>
+    <form action="<%= baseUrl %>/issues/<%= issue.id %>?_method=DELETE" method="post">
       <input type="submit" value="Delete">
     </form>
   </main>

@@ -20,7 +20,7 @@ router.get('/', isAuthenticated, async (req, res) => {
   const issues = await Issue.find({boardId: req.board.id});
   res.render('issues/index.ejs', {
     issues: issues,
-    boardKey: req.board.key
+    baseUrl: req.baseUrl
   });
 });
 
@@ -41,7 +41,7 @@ router.route('/issues/:id')
     const issue = await Issue.findById(req.params.id);
     res.render('issues/show.ejs', {
       issue: issue,
-      boardKey: req.board.key
+      baseUrl: req.baseUrl
     });
   })
   .put(isAuthenticated, async (req, res) => {
