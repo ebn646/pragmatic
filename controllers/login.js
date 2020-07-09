@@ -7,9 +7,10 @@ const User = require('../models/users.js');
 const router = express.Router();
 
 // Routers
-router.get('/', (req, res) => {
-  res.send('This is the login page!');
-});
+router.route('/')
+  .get((req, res) => {
+    res.render('login/login.ejs');
+  });
 
 // Export
 module.exports = router;
