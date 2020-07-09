@@ -32,5 +32,9 @@ router.get('/new', isAuthenticated, (req, res) => {
   res.render('boards/new.ejs');
 });
 
+router.get('/key/:boardKey', (req, res) => {
+  res.send('hello');
+});
+
 // Export router
 module.exports = router;
