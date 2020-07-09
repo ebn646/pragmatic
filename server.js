@@ -5,9 +5,10 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 require('dotenv').config();
 
+const boardsRouter = require('./controllers/boards.js');
+const loginRouter = require('./controllers/login.js');
 const projectsRouter = require('./controllers/projects.js');
 const signupRouter = require('./controllers/signup.js');
-const loginRouter = require('./controllers/login.js');
 
 // Config
 const app = express();
@@ -35,6 +36,7 @@ app.use(session({
 // Routers
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
+app.use('/boards', boardsRouter);
 app.use('/projects', projectsRouter);
 app.get('/', (req, res) => {
   res.redirect('/projects');
