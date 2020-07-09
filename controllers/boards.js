@@ -20,7 +20,8 @@ router.route('/')
   .get(isAuthenticated, async (req, res) => {
     const boards = await Board.find({userId: req.session.user._id});
     res.render('boards/index.ejs', {
-      boards: boards
+      boards: boards,
+      title: 'Boards'
     });
   })
   .post(isAuthenticated, async (req, res) => {
