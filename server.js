@@ -3,6 +3,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const projectsRouter = require('./controllers/projects.js');
+const signupRouter = require('./controllers/signup.js');
 const loginRouter = require('./controllers/login.js');
 
 // Config
@@ -24,6 +25,7 @@ app.use(express.static('public')); // serve static files on public folder
 app.use(express.urlencoded({extended: true}));
 
 // Routers
+app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/projects', projectsRouter);
 app.get('/', (req, res) => {
