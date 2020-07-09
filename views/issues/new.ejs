@@ -11,7 +11,7 @@
   </header>
   <main>
     <a href="#" onclick="history.go(-1)">Back</a>
-    <form action="/projects/issues" method="post">
+    <form action="/boards/key/<%= boardKey %>/issues" method="post">
       <input type="text" id="title" name="title" placeholder="What needs to be done?" required>
       <br>
       <label for="description">
@@ -47,11 +47,6 @@
       <label for="epic">
         Epic:
         <input type="text" id="epic" name="epic">
-      </label>
-      <br>
-      <label for="project">
-        Project:
-        <input type="text" id="project" name="project">
       </label>
       <br>
       <input type="submit">

@@ -17,33 +17,31 @@ const isAuthenticated = (req, res, next) => {
 
 // Routes
 
-// FOR TESTING PURPOSES
-router.get('/seed', isAuthenticated, async (req, res) => {
-  await Issue.collection.drop();
-  await Issue.create(seed);
-  res.redirect('/projects');
-});
-
 router.get('/', isAuthenticated, async (req, res) => {
-  const issues = await Issue.find({});
-  res.render('projects/index.ejs', {
-    issues: issues
+  const issues = await Issue.find({boardId: req.board.id});
+  console.log(issues);
+  res.render('issues/index.ejs', {
+    issues: issues,
+    boardKey: req.board.key
   });
 });
 
 router.post('/issues', isAuthenticated, async (req, res) => {
+  req.body.boardId = req.board.id;
   await Issue.create(req.body);
-  res.redirect('/projects');
+  res.redirect(`/boards/key/${req.board.key}`);
 });
 
 router.get('/issues/new', isAuthenticated, (req, res) => {
-  res.render('projects/new.ejs');
+  res.render('issues/new.ejs', {
+    boardKey: req.board.key
+  });
 });
 
 router.route('/issues/:id')
   .get(isAuthenticated, async (req, res) => {
     const issue = await Issue.findById(req.params.id);
-    res.render('projects/show.ejs', {
+    res.render('issues/show.ejs', {
       issue: issue
     });
   })
@@ -58,7 +56,7 @@ router.route('/issues/:id')
   });
 
 router.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
-  res.render('projects/edit.ejs', {
+  res.render('issues/edit.ejs', {
     id: req.params.id
   });
 });

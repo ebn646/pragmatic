@@ -12,7 +12,7 @@ const issueSchema = new mongoose.Schema(
     priority: {type: String, default: 'medium'},
     storyPoints: {type: Number, default: null},
     epic: {type: String, default: null},
-    project: String
+    boardId: {type: mongoose.ObjectId, required: true}
   }, {timestamps: true}
 );
 

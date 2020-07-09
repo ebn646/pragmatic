@@ -1,6 +1,7 @@
 // Dependencies
 const express = require('express');
 const Board = require('../models/boards.js');
+const issuesRouter = require('./issues.js');
 
 // Config
 const router = express.Router();
@@ -32,9 +33,12 @@ router.get('/new', isAuthenticated, (req, res) => {
   res.render('boards/new.ejs');
 });
 
-router.get('/key/:boardKey', (req, res) => {
-  res.send('hello');
-});
+router.use(
+  '/key/:boardKey', async (req, res, next) => {
+    req.board = await Board.findOne({key: req.params.boardKey});
+    next();
+  }, issuesRouter
+);
 
 // Export router
 module.exports = router;

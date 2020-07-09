@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const boardsRouter = require('./controllers/boards.js');
 const loginRouter = require('./controllers/login.js');
-const projectsRouter = require('./controllers/projects.js');
+// const projectsRouter = require('./controllers/issues.js');
 const signupRouter = require('./controllers/signup.js');
 
 // Config
@@ -37,7 +37,7 @@ app.use(session({
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/boards', boardsRouter);
-app.use('/projects', projectsRouter);
+// app.use('/projects', projectsRouter);
 app.get('/', (req, res) => {
   res.redirect('/boards');
 });
