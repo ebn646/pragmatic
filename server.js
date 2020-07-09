@@ -39,7 +39,7 @@ app.use('/login', loginRouter);
 app.use('/boards', boardsRouter);
 app.use('/projects', projectsRouter);
 app.get('/', (req, res) => {
-  res.redirect('/projects');
+  res.redirect('/boards');
 });
 
 // Listener

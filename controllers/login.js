@@ -20,7 +20,7 @@ router.route('/')
 
     if (user && passwordMatches) {
       req.session.user = user;
-      res.redirect('/projects');
+      res.redirect('/boards');
     } else {
       res.send('Invalid email or password');
     }
