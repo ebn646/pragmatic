@@ -12,7 +12,9 @@ router.route('/')
     res.render('login/login.ejs');
   })
   .post(async (req, res) => {
-    const user = await User.findOne({email: req.body.email});
+    const user = await User.findOne({email: req.body.email}).catch(
+      err => console.log(err.message)
+    );
     const passwordMatches = user ?
       bcrypt.compareSync(req.body.password, user.password) : false;
 
