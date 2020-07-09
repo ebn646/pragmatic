@@ -3,6 +3,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const projectsRouter = require('./controllers/projects.js');
+const loginRouter = require('./controllers/login.js');
 
 // Config
 const app = express();
@@ -23,7 +24,11 @@ app.use(express.static('public')); // serve static files on public folder
 app.use(express.urlencoded({extended: true}));
 
 // Routers
+app.use('/login', loginRouter);
 app.use('/projects', projectsRouter);
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
 
 // Listener
 app.listen(PORT, ()=> console.log(`Listening on port: ${PORT}`));
