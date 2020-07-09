@@ -5,6 +5,7 @@ const User = require('../models/users.js');
 
 // Config
 const router = express.Router();
+
 // Routers
 router.route('/')
   .get((req, res) => {
