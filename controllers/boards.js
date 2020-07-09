@@ -16,7 +16,7 @@ const isAuthenticated = (req, res, next) => {
 
 // Routes
 router.get('/', isAuthenticated, (req, res) => {
-  res.send('Hi');
+  res.render('boards/index.ejs');
 });
 
 // Export router
