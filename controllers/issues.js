@@ -16,10 +16,8 @@ const isAuthenticated = (req, res, next) => {
 };
 
 // Routes
-
 router.get('/', isAuthenticated, async (req, res) => {
   const issues = await Issue.find({boardId: req.board.id});
-  console.log(issues);
   res.render('issues/index.ejs', {
     issues: issues,
     boardKey: req.board.key
@@ -42,7 +40,8 @@ router.route('/issues/:id')
   .get(isAuthenticated, async (req, res) => {
     const issue = await Issue.findById(req.params.id);
     res.render('issues/show.ejs', {
-      issue: issue
+      issue: issue,
+      boardKey: req.board.key
     });
   })
   .put(isAuthenticated, async (req, res) => {

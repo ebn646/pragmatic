@@ -13,7 +13,7 @@
     <h2>Backlog</h2>
     <ul>
       <% issues.forEach(issue => { %>
-        <li><a href="/projects/issues/<%= issue.id %>"><%= issue.title %></a></li>
+        <li><a href="/boards/key/<%= boardKey %>/issues/<%= issue.id %>"><%= issue.title %></a></li>
       <% }) %>
     </ul>
     <a href="/boards/key/<%= boardKey %>/issues/new">+ Create issue</a>
