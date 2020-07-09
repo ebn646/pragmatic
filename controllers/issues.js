@@ -51,7 +51,7 @@ router.route('/issues/:id')
   })
   .delete(isAuthenticated, async (req, res) => {
     await Issue.findByIdAndRemove(req.params.id, {useFindAndModify: false});
-    res.redirect('/projects');
+    res.redirect(req.baseUrl);
   });
 
 router.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
