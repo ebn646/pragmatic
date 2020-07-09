@@ -15,7 +15,7 @@ router.route('/')
     req.body.password = bcrypt.hashSync(
       req.body.password, bcrypt.genSaltSync(10)
     );
-    await User.create(req.body);
+    await User.create(req.body).catch(err => console.log(err.message));
     res.redirect('/projects');
   });
 
