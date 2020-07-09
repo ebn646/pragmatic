@@ -47,7 +47,7 @@ router.route('/issues/:id')
   .put(isAuthenticated, async (req, res) => {
     const id = req.params.id;
     await Issue.findByIdAndUpdate(id, req.body);
-    res.redirect(`/projects/issues/${id}`);
+    res.redirect(`${req.baseUrl}/issues/${id}`);
   })
   .delete(isAuthenticated, async (req, res) => {
     await Issue.findByIdAndRemove(req.params.id, {useFindAndModify: false});
@@ -56,7 +56,8 @@ router.route('/issues/:id')
 
 router.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
   res.render('issues/edit.ejs', {
-    id: req.params.id
+    id: req.params.id,
+    baseUrl: req.baseUrl
   });
 });
 
