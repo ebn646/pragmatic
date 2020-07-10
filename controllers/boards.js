@@ -36,8 +36,14 @@ router.get('/new', isAuthenticated, (req, res) => {
 
 router.use(
   '/key/:boardKey', async (req, res, next) => {
-    req.board = await Board.findOne({key: req.params.boardKey});
-    next();
+    req.board = await Board.findOne({
+      userId: req.session.user._id, key: req.params.boardKey
+    });
+    if (req.board) {
+      next();
+    } else {
+      res.send('404');
+    }
   }, issuesRouter
 );
 
