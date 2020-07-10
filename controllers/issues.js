@@ -18,10 +18,12 @@ const isAuthenticated = (req, res, next) => {
 // Routes
 router.get('/', isAuthenticated, async (req, res) => {
   const issues = await Issue.find({boardId: req.board.id});
+  const boardKey = req.board.key.toUpperCase();
   res.render('issues/index.ejs', {
     issues: issues,
     baseUrl: req.baseUrl,
-    title: `${req.board.key.toUpperCase()} board`
+    title: `${boardKey} board`,
+    boardKey: boardKey
   });
 });
 
