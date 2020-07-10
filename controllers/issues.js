@@ -20,7 +20,8 @@ router.get('/', isAuthenticated, async (req, res) => {
   const issues = await Issue.find({boardId: req.board.id});
   res.render('issues/index.ejs', {
     issues: issues,
-    baseUrl: req.baseUrl
+    baseUrl: req.baseUrl,
+    title: `${req.board.key.toUpperCase()} board`
   });
 });
 
