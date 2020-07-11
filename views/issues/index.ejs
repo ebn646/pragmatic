@@ -1,61 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head.ejs') %>
+
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="/">Pragmatic</a>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/boards">Projects</a></li>
-      </ul>
-    </div>
-  </nav>
-  <main class="container-fluid">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/">Pragmatic</a>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/boards">Projects</a></li>
+			</ul>
+		</div>
+	</nav>
+	<main class="container-fluid">
 
-    <div class="row">
-      <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-          <li class="active">
-            <a href="">
-              Backlog
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li><a href="">Issues</a></li>
-          <li><a href="">Sprints</a></li>
-        </ul>
-      </div>
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active">
+						<a href="">
+							Backlog
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li><a href="">Issues</a></li>
+					<li><a href="">Sprints</a></li>
+				</ul>
+			</div>
 
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">Backlog</h1>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h1 class="page-header">Backlog</h1>
 
-        <h2 class="sub-header">
-          Backlog 
-          <span class="issue-count">
-            <%= issues.length %> <%= issues.length > 1 ? 'issues' : 'issue' %> 
-          </span>
-        </h2>
+				<h2 class="sub-header">
+					Backlog
+					<span class="issue-count">
+						<%= issues.length %> <%= issues.length > 1 ? 'issues' : 'issue' %>
+					</span>
+				</h2>
 
-        <div class="table-responsive">
-          <table class="table">
-            <% issues.forEach(issue => { %>
-              <tr>
-                <td class="hidden id"><%= issue._id %></td>
-                <td><%= issue.issueType %></td>
-                <td><%= issue.title %></td>
-                <td><%= issue.priority %></td>
-                <td><%= issue.storyPoints %></td>
-              </tr>
-            <% }) %>
-          </table>
-        </div>
+				<div class="table-responsive">
+					<table class="table">
+						<% issues.forEach(issue => { %>
+						<tr>
+							<td class="hidden id"><%= issue._id %></td>
+							<td><%= issue.issueType %></td>
+							<td><%= issue.title %></td>
+							<td><%= issue.priority %></td>
+							<td><%= issue.storyPoints %></td>
+						</tr>
+						<% }) %>
+					</table>
+				</div>
 
-        <a href="<%= baseUrl %>/issues/new">+ Create issue</a>
+				<a href="<%= baseUrl %>/issues/new">+ Create issue</a>
 
-      </div>
+			</div>
 
 
-    </div>
-  </main>
+		</div>
+	</main>
 </body>
+
 </html>
