@@ -16,20 +16,25 @@
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
           <li class="active">
-            <a href="#">
+            <a href="">
               Backlog
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li><a href="#">Issues</a></li>
-          <li><a href="#">Sprints</a></li>
+          <li><a href="">Issues</a></li>
+          <li><a href="">Sprints</a></li>
         </ul>
       </div>
 
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h1 class="page-header">Backlog</h1>
 
-        <h2 class="sub-header">Backlog</h2>
+        <h2 class="sub-header">
+          Backlog 
+          <span class="issue-count">
+            <%= issues.length %> <%= issues.length > 1 ? 'issues' : 'issue' %> 
+          </span>
+        </h2>
 
         <div class="table-responsive">
           <table class="table">
@@ -48,6 +53,8 @@
         <a href="<%= baseUrl %>/issues/new">+ Create issue</a>
 
       </div>
+
+
     </div>
   </main>
 </body>

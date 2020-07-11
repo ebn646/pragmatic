@@ -79,3 +79,8 @@ body {
 tr:hover {
   background-color: lightgray;
 }
+
+.issue-count {
+  font-weight: 300;
+  color: gray;
+}
