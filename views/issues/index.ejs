@@ -35,8 +35,9 @@
           <table class="table">
             <% issues.forEach(issue => { %>
               <tr>
+                <td class="hidden id"><%= issue._id %></td>
                 <td><%= issue.issueType %></td>
-                <td><a href="<%= baseUrl %>/issues/<%= issue.id %>"><%= issue.title %></a></td>
+                <td><%= issue.title %></td>
                 <td><%= issue.storyPoints %></td>
                 <td><%= issue.priority %></td>
               </tr>
