@@ -2,29 +2,48 @@
 <html lang="en">
 <%- include('../partials/head.ejs') %>
 <body>
-  <header>
-    <nav>
-      <a href="#">Pragmatic</a>
-      <ul>
-        <li><a href="#">Link 1</a></li>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Pragmatic</a>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>
       </ul>
-    </nav>
-    <h1>Backlog</h1>
-  </header>
-  <main>
-    <h2>Backlog</h2>
-    <table>
-      <% issues.forEach(issue => { %>
-        <tr>
-          <td><%= issue.issueType %></td>
-          <td><a href="<%= baseUrl %>/issues/<%= issue.id %>"><%= issue.title %></a></td>
-          <td><%= issue.storyPoints %></td>
-          <td><%= issue.priority %></td>
-        </tr>
-      <% }) %>
-    </table>
-    <a href="<%= baseUrl %>/issues/new">+ Create issue</a>
+    </div>
+  </nav>
+  <main class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li><a class="active" href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Backlog</h1>
+
+        <h2 class="sub-header">Backlog</h2>
+
+        <div class="table-responsive">
+          <table class="table">
+            <% issues.forEach(issue => { %>
+              <tr>
+                <td><%= issue.issueType %></td>
+                <td><a href="<%= baseUrl %>/issues/<%= issue.id %>"><%= issue.title %></a></td>
+                <td><%= issue.storyPoints %></td>
+                <td><%= issue.priority %></td>
+              </tr>
+            <% }) %>
+          </table>
+        </div>
+
+        <a href="<%= baseUrl %>/issues/new">+ Create issue</a>
+
+      </div>
+    </div>
   </main>
 </body>
 </html>
