@@ -3,7 +3,6 @@ import express from 'express';
 import methodOverride from 'method-override';
 import mongoose from 'mongoose';
 import session from 'express-session';
-import './config.js';
 
 import boardsRouter from './controllers/boards.js';
 import loginRouter from './controllers/login.js';
@@ -32,7 +31,7 @@ app.use(express.urlencoded({
 	extended: true
 }));
 app.use(session({
-	secret: process.env.SECRET,
+	secret: process.env.SECRET || 'SecondBreakfast',
 	resave: false,
 	saveUninitialized: false
 }));
