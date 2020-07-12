@@ -9,7 +9,7 @@
 	</header>
 	<main>
 		<% boards.forEach(board => { %>
-		<li><a href="/boards/key/<%= board.key %>"><%= board.name %></a></li>
+		<li><a href="/boards/_<%= board.key %>"><%= board.name %></a></li>
 		<% }) %>
 		<a href="/boards/new">Create board</a>
 	</main>
