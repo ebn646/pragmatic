@@ -19,12 +19,8 @@ const isAuthenticated = (req, res, next) => {
 issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const boardId = req.board.id;
-	const groups = await Group.find({
-		boardId: boardId
-	});
-	const issues = await Issue.find({
-		boardId: boardId
-	});
+	const groups = await Group.find({ boardId: boardId });
+	const issues = await Issue.find({ boardId: boardId });
 	const boardKey = req.board.key.toUpperCase();
 	// Render
 	res.render('issues/index.ejs', {
@@ -36,11 +32,15 @@ issuesRouter.get('/', isAuthenticated, async (req, res) => {
 });
 
 issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
+	// Get relevant variables
 	const boardId = req.board.id;
 	const backlog = await Group.findOne({name: 'Backlog', boardId: boardId});
+	// Add missing required fields
 	req.body.boardId = boardId;
 	req.body.groupId = backlog._id;
+	// Create new issue and assign to backlog group
 	await Issue.create(req.body);
+	// Redirect
 	res.redirect(req.baseUrl);
 });
 
@@ -53,7 +53,7 @@ issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
 
 issuesRouter.route('/issues/:id')
 	.get(isAuthenticated, async (req, res) => {
-		const issue = await getIssue(req.params.id);
+		const issue = await Issue.findById(req.params.id);
 		res.render('issues/show.ejs', {
 			issue: issue,
 			baseUrl: req.baseUrl
