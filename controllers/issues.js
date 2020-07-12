@@ -29,8 +29,6 @@ issuesRouter.get('/', isAuthenticated, async (req, res) => {
 });
 
 issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
-	console.log(req.board.id);
-	console.log('Body: ', req.body);
 	await Group.updateOne({
 		boardId: req.board.id,
 		name: 'Backlog'
@@ -51,7 +49,17 @@ issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
 
 issuesRouter.route('/issues/:id')
 	.get(isAuthenticated, async (req, res) => {
-		const issue = await Group.findById(req.params.id);
+		const issueId = req.params.id;
+		const query = await Group.find({
+			'issues._id': issueId
+		}, {
+			issues: {
+				$elemMatch: {
+					'_id': issueId
+				}
+			}
+		}).lean();
+		const issue = query[0].issues[0];
 		res.render('issues/show.ejs', {
 			issue: issue,
 			baseUrl: req.baseUrl
