@@ -31,7 +31,7 @@
 				<h1 class="page-header">Backlog</h1>
 
 				<% groups.forEach(group => { %>
-					<% const groupIssues = issues.filter(issue => issue.groupId == group._id) %>
+					<% const groupIssues = issues.filter(issue => String(issue.groupId) == String(group._id)) %>
 				<h2 class="sub-header">
 					<%= group.name %>
 					<span class="issue-count">
