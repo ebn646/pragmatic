@@ -82,8 +82,10 @@ issuesRouter.route('/issues/:id')
 	});
 
 issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
+	const issue = await getIssue(req.params.id);
+	console.log(issue);
 	res.render('issues/edit.ejs', {
-		id: req.params.id,
+		issue: issue,
 		baseUrl: req.baseUrl
 	});
 });

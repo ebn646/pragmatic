@@ -13,47 +13,47 @@
 	</header>
 	<main>
 		<a href="#" onclick="history.go(-1)">Back</a>
-		<form action="<%= baseUrl %>/issues/<%= id %>?_method=PUT" method="post">
-			<input type="text" id="title" name="title" placeholder="What needs to be done?" required>
+		<form action="<%= baseUrl %>/issues/<%= issue._id %>?_method=PUT" method="post">
+			<input type="text" id="title" name="title" placeholder="What needs to be done?" required value="<%= issue.title %>">
 			<br>
 			<label for="description">
 				Description:
-				<input type="text" id="description" name="description">
+				<input type="text" id="description" name="description" value="<%= issue.description %>">
 			</label>
 			<br>
 			<label for="issueType">
 				Issue type:
-				<input type="text" id="issueType" name="issueType">
+				<input type="text" id="issueType" name="issueType" value="<%= issue.type %>">
 			</label>
 			<br>
 			<label for="reporter">
 				Reporter:
-				<input type="text" id="reporter" name="reporter">
+				<input type="text" id="reporter" name="reporter" value="<%= issue.reporter %>">
 			</label>
 			<br>
 			<label for="assignee">
 				Assignee:
-				<input type="text" id="assignee" name="assignee">
+				<input type="text" id="assignee" name="assignee" value="<%= issue.assignee %>">
 			</label>
 			<br>
 			<label for="priority">
 				Priority:
-				<input type="text" id="priority" name="priority">
+				<input type="text" id="priority" name="priority" value="<%= issue.priority %>">
 			</label>
 			<br>
 			<label for="storyPoints">
 				Story points:
-				<input type="number" id="storyPoints" name="storyPoints">
+				<input type="number" id="storyPoints" name="storyPoints" value="<%= issue.storyPoints %>">
 			</label>
 			<br>
 			<label for="epic">
 				Epic:
-				<input type="text" id="epic" name="epic">
+				<input type="text" id="epic" name="epic" value="<%= issue.storyPoints %>">
 			</label>
 			<br>
 			<label for="project">
 				Project:
-				<input type="text" id="project" name="project">
+				<input type="text" id="project" name="project" value="<%= issue.project %>">
 			</label>
 			<br>
 			<input type="submit">
