@@ -69,13 +69,12 @@ issuesRouter.route('/issues/:id')
 	})
 	// Update route
 	.put(isAuthenticated, async (req, res) => {
-		const issueId = req.params.id;
-		await Issue.findByIdAndUpdate(issueId, req.body);
+		await Issue.findByIdAndUpdate(req.params.id, req.body);
 		res.redirect(req.baseUrl);
 	})
 	// Delete route
 	.delete(isAuthenticated, async (req, res) => {
-		await Group.findByIdAndRemove(req.params.id, {
+		await Issue.findByIdAndRemove(req.params.id, {
 			useFindAndModify: false
 		});
 		res.redirect(req.baseUrl);
