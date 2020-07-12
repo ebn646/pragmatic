@@ -1,5 +1,6 @@
 // Dependencies
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 
 // Schema
@@ -13,4 +14,4 @@ const groupSchema = new mongoose.Schema({
 const Group = mongoose.model('Group', groupSchema);
 
 // Export
-module.exports = Group;
+export default Group;

@@ -1,13 +1,13 @@
 // Dependencies
-const express = require('express');
-const methodOverride = require('method-override');
-const mongoose = require('mongoose');
-const session = require('express-session');
-require('dotenv').config();
+import express from 'express';
+import methodOverride from 'method-override';
+import mongoose from 'mongoose';
+import session from 'express-session';
+import './config.js';
 
-const boardsRouter = require('./controllers/boards.js');
-const loginRouter = require('./controllers/login.js');
-const signupRouter = require('./controllers/signup.js');
+import boardsRouter from './controllers/boards.js';
+import loginRouter from './controllers/login.js';
+import signupRouter from './controllers/signup.js';
 
 // Config
 const app = express();

@@ -1,13 +1,13 @@
 // Dependencies
-const bcrypt = require('bcrypt');
-const express = require('express');
-const User = require('../models/users.js');
+import bcrypt from 'bcrypt';
+import express from 'express';
+import User from '../models/users.js';
 
 // Config
-const router = express.Router();
+const loginRouter = express.Router();
 
 // Routers
-router.route('/')
+loginRouter.route('/')
 	.get((req, res) => {
 		res.render('login/login.ejs');
 	})
@@ -29,4 +29,4 @@ router.route('/')
 	});
 
 // Export
-module.exports = router;
+export default loginRouter;

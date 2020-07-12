@@ -1,5 +1,6 @@
 // Dependency
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Schema
 const boardSchema = new mongoose.Schema({
@@ -23,4 +24,4 @@ const boardSchema = new mongoose.Schema({
 const Board = mongoose.model('Board', boardSchema);
 
 // Export
-module.exports = Board;
+export default Board;

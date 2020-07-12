@@ -1,8 +1,8 @@
 // Dependencies
-const express = require('express');
-const Board = require('../models/boards.js');
-const Issue = require('../models/issues.js');
-const issuesRouter = require('./issues.js');
+import express from 'express';
+import Board from '../models/boards.js';
+import Issue from '../models/issues.js';
+import issuesRouter from './issues.js';
 
 // Config
 const router = express.Router();
@@ -61,4 +61,4 @@ router.use(
 );
 
 // Export router
-module.exports = router;
+export default router;

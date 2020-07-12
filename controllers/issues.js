@@ -1,10 +1,9 @@
 // Dependencies
-const express = require('express');
-const Issue = require('../models/issues.js');
-// const seed = require('../models/issueSeed.js');
+import express from 'express';
+import Issue from '../models/issues.js';
 
 // Config
-const router = express.Router();
+const issuesRouter = express.Router();
 
 // Authentication
 const isAuthenticated = (req, res, next) => {
@@ -16,7 +15,7 @@ const isAuthenticated = (req, res, next) => {
 };
 
 // Routes
-router.get('/', isAuthenticated, async (req, res) => {
+issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	const issues = await Issue.find({
 		boardId: req.board.id
 	});
@@ -29,19 +28,19 @@ router.get('/', isAuthenticated, async (req, res) => {
 	});
 });
 
-router.post('/issues', isAuthenticated, async (req, res) => {
+issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 	req.body.boardId = req.board.id;
 	await Issue.create(req.body);
 	res.redirect(`/boards/key/${req.board.key}`);
 });
 
-router.get('/issues/new', isAuthenticated, (req, res) => {
+issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
 	res.render('issues/new.ejs', {
 		boardKey: req.board.key
 	});
 });
 
-router.route('/issues/:id')
+issuesRouter.route('/issues/:id')
 	.get(isAuthenticated, async (req, res) => {
 		const issue = await Issue.findById(req.params.id);
 		res.render('issues/show.ejs', {
@@ -61,12 +60,12 @@ router.route('/issues/:id')
 		res.redirect(req.baseUrl);
 	});
 
-router.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
+issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
 	res.render('issues/edit.ejs', {
 		id: req.params.id,
 		baseUrl: req.baseUrl
 	});
 });
 
-// Export router
-module.exports = router;
+// Export issuesRouter
+export default issuesRouter;

@@ -1,5 +1,6 @@
 // Dependencies
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Schema
 const issueSchema = new mongoose.Schema({
@@ -47,4 +48,4 @@ const issueSchema = new mongoose.Schema({
 const Issue = mongoose.model('Issue', issueSchema);
 
 // Export
-module.exports = Issue;
+export default Issue;

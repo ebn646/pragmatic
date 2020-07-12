@@ -1,5 +1,6 @@
 // Dependency
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Schema
 const userSchema = new mongoose.Schema({
@@ -33,4 +34,4 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Export
-module.exports = User;
+export default User;
