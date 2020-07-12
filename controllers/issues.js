@@ -15,7 +15,11 @@ const isAuthenticated = (req, res, next) => {
 	}
 };
 
-// Routes
+/*
+Routes
+*/
+
+// Index route
 issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const boardId = req.board.id;
@@ -31,6 +35,7 @@ issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	});
 });
 
+// Create route
 issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const boardId = req.board.id;
@@ -44,7 +49,9 @@ issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 	res.redirect(req.baseUrl);
 });
 
+// New route
 issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
+	// Render new view
 	res.render('issues/new.ejs', {
 		boardKey: req.board.key,
 		baseUrl: req.baseUrl
@@ -52,6 +59,7 @@ issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
 });
 
 issuesRouter.route('/issues/:id')
+	// Show route
 	.get(isAuthenticated, async (req, res) => {
 		const issue = await Issue.findById(req.params.id);
 		res.render('issues/show.ejs', {
@@ -59,11 +67,13 @@ issuesRouter.route('/issues/:id')
 			baseUrl: req.baseUrl
 		});
 	})
+	// Update route
 	.put(isAuthenticated, async (req, res) => {
-		const id = req.params.id;
-		await Group.findByIdAndUpdate(id, req.body);
+		const issueId = req.params.id;
+		await Issue.findByIdAndUpdate(issueId, req.body);
 		res.redirect(req.baseUrl);
 	})
+	// Delete route
 	.delete(isAuthenticated, async (req, res) => {
 		await Group.findByIdAndRemove(req.params.id, {
 			useFindAndModify: false
@@ -71,13 +81,14 @@ issuesRouter.route('/issues/:id')
 		res.redirect(req.baseUrl);
 	});
 
+// Edit route
 issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
-	const issue = await getIssue(req.params.id);
+	const issue = await Issue.findById(req.params.id);
 	res.render('issues/edit.ejs', {
 		issue: issue,
 		baseUrl: req.baseUrl
 	});
 });
 
-// Export issuesRouter
+// Export
 export default issuesRouter;
