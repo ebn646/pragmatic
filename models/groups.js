@@ -2,43 +2,6 @@
 import mongoose from 'mongoose';
 
 // Schema
-const issueSchema = new mongoose.Schema({
-	title: {
-		type: String,
-		required: true
-	},
-	description: {
-		type: String,
-		default: null
-	},
-	type: {
-		type: String,
-		default: 'user story'
-	},
-	reporter: {
-		type: String,
-		default: null
-	},
-	assignee: {
-		type: String,
-		default: null
-	},
-	priority: {
-		type: String,
-		default: 'medium'
-	},
-	storyPoints: {
-		type: Number,
-		default: null
-	},
-	epic: {
-		type: String,
-		default: null
-	}
-}, {
-	timestamps: true
-});
-
 const groupSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -53,8 +16,7 @@ const groupSchema = new mongoose.Schema({
 	boardId: {
 		type: mongoose.ObjectId,
 		required: true
-	},
-	issues: [issueSchema]
+	}
 }, {
 	timestamps: true
 });

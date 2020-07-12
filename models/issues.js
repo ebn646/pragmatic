@@ -38,6 +38,10 @@ const issueSchema = new mongoose.Schema({
 	groupId: {
 		type: mongoose.ObjectId,
 		required: true
+	},
+	boardId: {
+		type: mongoose.ObjectId,
+		required: true
 	}
 }, {
 	timestamps: true

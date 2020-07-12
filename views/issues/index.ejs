@@ -31,16 +31,17 @@
 				<h1 class="page-header">Backlog</h1>
 
 				<% groups.forEach(group => { %>
+					<% const groupIssues = issues.filter(issue => issue.groupId == group._id) %>
 				<h2 class="sub-header">
 					<%= group.name %>
 					<span class="issue-count">
-						<%= group.issues.length %>
-						<%= group.issues.length != 1 ? 'issues' : 'issue' %>
+						<%= groupIssues.length %>
+						<%= groupIssues.length != 1 ? 'issues' : 'issue' %>
 					</span>
 				</h2>
 
 				<table class="table">
-					<% group.issues.forEach(issue => { %>
+					<% groupIssues.forEach(issue => { %>
 					<tr>
 						<td class="hidden id"><%= issue._id %></td>
 						<td><%= issue.type %></td>

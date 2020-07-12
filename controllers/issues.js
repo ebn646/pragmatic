@@ -1,23 +1,10 @@
 // Dependencies
 import express from 'express';
 import Group from '../models/groups.js';
+import Issue from '../models/issues.js';
 
 // Config
 const issuesRouter = express.Router();
-
-// Functions
-const getIssue = async (id) => {
-	const query = await Group.find({
-		'issues._id': id
-	}, {
-		issues: {
-			$elemMatch: {
-				'_id': id
-			}
-		}
-	}).lean();
-	return query[0].issues[0];
-};
 
 // Authentication
 const isAuthenticated = (req, res, next) => {
@@ -30,15 +17,20 @@ const isAuthenticated = (req, res, next) => {
 
 // Routes
 issuesRouter.get('/', isAuthenticated, async (req, res) => {
+	const boardId = req.board.id;
 	const groups = await Group.find({
-		boardId: req.board.id
+		boardId: boardId
+	});
+	const issues = await Issue.find({
+		boardId: boardId
 	});
 	const boardKey = req.board.key.toUpperCase();
 	res.render('issues/index.ejs', {
 		groups: groups,
+		issues: issues,
 		baseUrl: req.baseUrl,
 		title: `${boardKey} board`,
-		boardKey: boardKey
+		// boardKey: boardKey
 	});
 });
 
@@ -72,7 +64,7 @@ issuesRouter.route('/issues/:id')
 	.put(isAuthenticated, async (req, res) => {
 		const id = req.params.id;
 		await Group.findByIdAndUpdate(id, req.body);
-		res.redirect(`${req.baseUrl}/issues/${id}`);
+		res.redirect(req.baseUrl);
 	})
 	.delete(isAuthenticated, async (req, res) => {
 		await Group.findByIdAndRemove(req.params.id, {
@@ -83,7 +75,6 @@ issuesRouter.route('/issues/:id')
 
 issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
 	const issue = await getIssue(req.params.id);
-	console.log(issue);
 	res.render('issues/edit.ejs', {
 		issue: issue,
 		baseUrl: req.baseUrl
