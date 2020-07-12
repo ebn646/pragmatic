@@ -36,6 +36,11 @@ router.get('/new', isAuthenticated, (req, res) => {
 	res.render('boards/new.ejs');
 });
 
+router.delete('/:boardId', async (req, res) => {
+	await Board.findByIdAndDelete(req.params.boardId);
+	res.redirect('/boards');
+});
+
 router.use(
 	'/_:boardKey', async (req, res, next) => {
 		req.board = await Board.findOne({
