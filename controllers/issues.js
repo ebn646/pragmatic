@@ -49,6 +49,24 @@ issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 	res.redirect(req.baseUrl);
 });
 
+issuesRouter.post('/sprint', isAuthenticated, async (req, res) => {
+	// Get relevant variables
+	const boardId = req.board.id;
+	// Get current largest index
+	const group = await Group.findOne({boardId: boardId}).sort('-index');
+	const newIndex = group.index + 1;
+	// Create data for new group
+	const newGroup = {
+		name: `${req.board.key.toUpperCase()} Sprint ${newIndex}`,
+		index: newIndex,
+		boardId: boardId
+	};
+	// Create new sprint group
+	await Group.create(newGroup);
+	// Redirect
+	res.redirect(req.baseUrl);
+});
+
 // New route
 issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
 	// Render new view

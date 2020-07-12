@@ -31,13 +31,18 @@
 				<h1 class="page-header">Backlog</h1>
 
 				<% groups.forEach(group => { %>
-					<% const groupIssues = issues.filter(issue => String(issue.groupId) == String(group._id)) %>
+				<% const groupIssues = issues.filter(issue => String(issue.groupId) == String(group._id)) %>
 				<h2 class="sub-header">
 					<%= group.name %>
 					<span class="issue-count">
 						<%= groupIssues.length %>
 						<%= groupIssues.length != 1 ? 'issues' : 'issue' %>
 					</span>
+					<% if (group.name == 'Backlog') { %>
+					<form action="<%= baseUrl %>/sprint" method="post">
+						<input type="submit" value="Create sprint">
+					</form>
+					<% } %>
 				</h2>
 
 				<table class="table">
@@ -52,12 +57,12 @@
 					<% }) %>
 				</table>
 
+				<% if (group.name == 'Backlog') { %>
+				<a href="<%= baseUrl %>/issues/new">+ Create issue</a>
+				<% } %>
 				<% }) %>
 
-				<a href="<%= baseUrl %>/issues/new">+ Create issue</a>
-
 			</div>
-
 		</div>
 	</main>
 </body>
