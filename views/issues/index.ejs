@@ -30,32 +30,43 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">Backlog</h1>
 
+				<% groups.forEach(group => { %>
+				<% const groupIssues = issues.filter(issue => String(issue.groupId) == String(group._id)) %>
 				<h2 class="sub-header">
-					Backlog
+					<%= group.name %>
 					<span class="issue-count">
-						<%= issues.length %> <%= issues.length > 1 ? 'issues' : 'issue' %>
+						<%= groupIssues.length %>
+						<%= groupIssues.length != 1 ? 'issues' : 'issue' %>
 					</span>
+					<% if (group.name == 'Backlog') { %>
+					<form action="<%= baseUrl %>/sprint" method="post">
+						<input type="submit" value="Create sprint">
+					</form>
+					<% } else { %>
+					<form action="<%= baseUrl %>/sprint/<%= group._id %>?_method=DELETE" method="post">
+						<input type="submit" value="Delete sprint">
+					</form>
+					<% } %>
 				</h2>
 
-				<div class="table-responsive">
-					<table class="table">
-						<% issues.forEach(issue => { %>
-						<tr>
-							<td class="hidden id"><%= issue._id %></td>
-							<td><%= issue.type %></td>
-							<td><%= issue.title %></td>
-							<td><%= issue.priority %></td>
-							<td><%= issue.storyPoints %></td>
-						</tr>
-						<% }) %>
-					</table>
-				</div>
+				<table class="table">
+					<% groupIssues.forEach(issue => { %>
+					<tr>
+						<td class="hidden id"><%= issue._id %></td>
+						<td><%= issue.type %></td>
+						<td><%= issue.title %></td>
+						<td><%= issue.priority %></td>
+						<td><%= issue.storyPoints %></td>
+					</tr>
+					<% }) %>
+				</table>
 
+				<% if (group.name == 'Backlog') { %>
 				<a href="<%= baseUrl %>/issues/new">+ Create issue</a>
+				<% } %>
+				<% }) %>
 
 			</div>
-
-
 		</div>
 	</main>
 </body>

@@ -13,7 +13,7 @@
 	</header>
 	<main>
 		<a href="#" onclick="history.go(-1)">Back</a>
-		<form action="/boards/key/<%= boardKey %>/issues" method="post">
+		<form action="<%= baseUrl %>/issues" method="post">
 			<input type="text" id="title" name="title" placeholder="What needs to be done?" required>
 			<br>
 			<label for="description">
@@ -23,7 +23,7 @@
 			<br>
 			<label for="issueType">
 				Issue type:
-				<input type="text" id="issueType" name="issueType">
+				<input type="text" id="issueType" name="issueType" value="user story">
 			</label>
 			<br>
 			<label for="reporter">
@@ -38,7 +38,7 @@
 			<br>
 			<label for="priority">
 				Priority:
-				<input type="text" id="priority" name="priority">
+				<input type="text" id="priority" name="priority" value="medium">
 			</label>
 			<br>
 			<label for="storyPoints">

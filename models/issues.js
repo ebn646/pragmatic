@@ -1,5 +1,4 @@
 // Dependencies
-// const mongoose = require('mongoose');
 import mongoose from 'mongoose';
 
 // Schema
@@ -35,6 +34,10 @@ const issueSchema = new mongoose.Schema({
 	epic: {
 		type: String,
 		default: null
+	},
+	groupId: {
+		type: mongoose.ObjectId,
+		required: true
 	},
 	boardId: {
 		type: mongoose.ObjectId,

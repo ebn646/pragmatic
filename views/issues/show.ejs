@@ -15,14 +15,15 @@
 		<a href="<%= baseUrl %>">Back</a>
 		<h2><%= issue.title %></h2>
 		<p>Description: <%= issue.description %></p>
+		<p>Issue type: <%= issue.type %></p>
 		<p>Reporter: <%= issue.reporter %></p>
 		<p>Assignee: <%= issue.assignee %></p>
 		<p>Priority: <%= issue.priority %></p>
 		<p>Story points: <%= issue.storyPoints %></p>
 		<p>Epic: <%= issue.epic %></p>
 		<p>Project: <%= issue.project %></p>
-		<a href="<%= baseUrl %>/issues/<%= issue.id %>/edit">Edit</a>
-		<form action="<%= baseUrl %>/issues/<%= issue.id %>?_method=DELETE" method="post">
+		<a href="<%= baseUrl %>/issues/<%= issue._id %>/edit">Edit</a>
+		<form action="<%= baseUrl %>/issues/<%= issue._id %>?_method=DELETE" method="post">
 			<input type="submit" value="Delete">
 		</form>
 	</main>
