@@ -35,7 +35,7 @@ issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	});
 });
 
-// Create route
+// Create issue route
 issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const boardId = req.board.id;
@@ -45,24 +45,6 @@ issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 	req.body.groupId = backlog._id;
 	// Create new issue and assign to backlog group
 	await Issue.create(req.body);
-	// Redirect
-	res.redirect(req.baseUrl);
-});
-
-issuesRouter.post('/sprint', isAuthenticated, async (req, res) => {
-	// Get relevant variables
-	const boardId = req.board.id;
-	// Get current largest index
-	const group = await Group.findOne({boardId: boardId}).sort('-index');
-	const newIndex = group.index + 1;
-	// Create data for new group
-	const newGroup = {
-		name: `${req.board.key.toUpperCase()} Sprint ${newIndex}`,
-		index: newIndex,
-		boardId: boardId
-	};
-	// Create new sprint group
-	await Group.create(newGroup);
 	// Redirect
 	res.redirect(req.baseUrl);
 });
@@ -105,6 +87,30 @@ issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
 		issue: issue,
 		baseUrl: req.baseUrl
 	});
+});
+
+// Create sprint route
+issuesRouter.post('/sprint', isAuthenticated, async (req, res) => {
+	// Get relevant variables
+	const boardId = req.board.id;
+	// Get current largest index
+	const group = await Group.findOne({boardId: boardId}).sort('-index');
+	const newIndex = group.index + 1;
+	// Create data for new group
+	const newGroup = {
+		name: `${req.board.key.toUpperCase()} Sprint ${newIndex}`,
+		index: newIndex,
+		boardId: boardId
+	};
+	// Create new sprint group
+	await Group.create(newGroup);
+	// Redirect
+	res.redirect(req.baseUrl);
+});
+
+issuesRouter.delete('/sprint/:groupId', isAuthenticated, async (req, res) => {
+	await Group.findByIdAndDelete(req.params.groupId);
+	res.redirect(req.baseUrl);
 });
 
 // Export

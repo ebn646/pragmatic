@@ -42,6 +42,10 @@
 					<form action="<%= baseUrl %>/sprint" method="post">
 						<input type="submit" value="Create sprint">
 					</form>
+					<% } else { %>
+					<form action="<%= baseUrl %>/sprint/<%= group._id %>?_method=DELETE" method="post">
+						<input type="submit" value="Delete sprint">
+					</form>
 					<% } %>
 				</h2>
 
