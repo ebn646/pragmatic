@@ -22,8 +22,8 @@
 		<p>Story points: <%= issue.storyPoints %></p>
 		<p>Epic: <%= issue.epic %></p>
 		<p>Project: <%= issue.project %></p>
-		<a href="<%= baseUrl %>/issues/<%= issue.id %>/edit">Edit</a>
-		<form action="<%= baseUrl %>/issues/<%= issue.id %>?_method=DELETE" method="post">
+		<a href="<%= baseUrl %>/issues/<%= issue._id %>/edit">Edit</a>
+		<form action="<%= baseUrl %>/issues/<%= issue._id %>?_method=DELETE" method="post">
 			<input type="submit" value="Delete">
 		</form>
 	</main>

@@ -5,6 +5,20 @@ import Group from '../models/groups.js';
 // Config
 const issuesRouter = express.Router();
 
+// Functions
+const getIssue = async (id) => {
+	const query = await Group.find({
+		'issues._id': id
+	}, {
+		issues: {
+			$elemMatch: {
+				'_id': id
+			}
+		}
+	}).lean();
+	return query[0].issues[0];
+};
+
 // Authentication
 const isAuthenticated = (req, res, next) => {
 	if (req.session.user) {
@@ -37,7 +51,7 @@ issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 			issues: req.body
 		}
 	});
-	res.redirect(`${req.baseUrl}`);
+	res.redirect(req.baseUrl);
 });
 
 issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
@@ -49,17 +63,7 @@ issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
 
 issuesRouter.route('/issues/:id')
 	.get(isAuthenticated, async (req, res) => {
-		const issueId = req.params.id;
-		const query = await Group.find({
-			'issues._id': issueId
-		}, {
-			issues: {
-				$elemMatch: {
-					'_id': issueId
-				}
-			}
-		}).lean();
-		const issue = query[0].issues[0];
+		const issue = await getIssue(req.params.id);
 		res.render('issues/show.ejs', {
 			issue: issue,
 			baseUrl: req.baseUrl
