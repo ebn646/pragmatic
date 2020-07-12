@@ -1,6 +1,7 @@
 // Dependencies
 import express from 'express';
 import Board from '../models/boards.js';
+import Group from '../models/groups.js';
 import Issue from '../models/issues.js';
 import issuesRouter from './issues.js';
 
@@ -29,7 +30,10 @@ router.route('/')
 	})
 	.post(isAuthenticated, async (req, res) => {
 		req.body.userId = req.session.user._id;
-		await Board.create(req.body).catch(err => console.log(err.message));
+		const board = await Board.create(req.body).catch(err => console.log(err.message));
+		Group.create({
+			boardId: board._id
+		});
 		res.redirect('/boards');
 	});
 
@@ -42,6 +46,7 @@ router.delete('/:boardId', async (req, res) => {
 	await Issue.deleteMany({
 		boardId: boardId
 	}).catch(err => console.log(err.message));
+	await Group.deleteMany({boardId: boardId});
 	await Board.findByIdAndDelete(boardId).catch(err => console.log(err.message));
 	res.redirect('/boards');
 });

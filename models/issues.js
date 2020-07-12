@@ -1,5 +1,4 @@
 // Dependencies
-// const mongoose = require('mongoose');
 import mongoose from 'mongoose';
 
 // Schema
@@ -36,7 +35,7 @@ const issueSchema = new mongoose.Schema({
 		type: String,
 		default: null
 	},
-	boardId: {
+	groupId: {
 		type: mongoose.ObjectId,
 		required: true
 	}
