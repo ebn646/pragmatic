@@ -11,7 +11,7 @@ const issueSchema = new mongoose.Schema({
 		type: String,
 		default: null
 	},
-	issueType: {
+	type: {
 		type: String,
 		default: 'user story'
 	},
