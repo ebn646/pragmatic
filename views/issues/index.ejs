@@ -31,30 +31,27 @@
 				<h1 class="page-header">Backlog</h1>
 
 				<% groups.forEach(group => { %>
-					<h2 class="sub-header">
-						<%= group.name %>
-						<span class="issue-count">
-							<%= group.issues.length %>
-							<%= group.issues.length != 1 ? 'issues' : 'issue' %>
-						</span>
-					</h2>
-				<% }) %>
+				<h2 class="sub-header">
+					<%= group.name %>
+					<span class="issue-count">
+						<%= group.issues.length %>
+						<%= group.issues.length != 1 ? 'issues' : 'issue' %>
+					</span>
+				</h2>
 
-				<% /* %>
-				<div class="table-responsive">
-					<table class="table">
-						<% group.issues.forEach(issue => { %>
-						<tr>
-							<td class="hidden id"><%= issue._id %></td>
-							<td><%= issue.type %></td>
-							<td><%= issue.title %></td>
-							<td><%= issue.priority %></td>
-							<td><%= issue.storyPoints %></td>
-						</tr>
-						<% }) %>
-					</table>
-				</div> -->
-				<% */ %>
+				<table class="table">
+					<% group.issues.forEach(issue => { %>
+					<tr>
+						<td class="hidden id"><%= issue._id %></td>
+						<td><%= issue.type %></td>
+						<td><%= issue.title %></td>
+						<td><%= issue.priority %></td>
+						<td><%= issue.storyPoints %></td>
+					</tr>
+					<% }) %>
+				</table>
+
+				<% }) %>
 
 				<a href="<%= baseUrl %>/issues/new">+ Create issue</a>
 

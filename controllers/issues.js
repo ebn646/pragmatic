@@ -16,7 +16,9 @@ const isAuthenticated = (req, res, next) => {
 
 // Routes
 issuesRouter.get('/', isAuthenticated, async (req, res) => {
-	const groups = await Group.find({boardId: req.board.id});
+	const groups = await Group.find({
+		boardId: req.board.id
+	});
 	const boardKey = req.board.key.toUpperCase();
 	res.render('issues/index.ejs', {
 		groups: groups,
@@ -27,14 +29,23 @@ issuesRouter.get('/', isAuthenticated, async (req, res) => {
 });
 
 issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
-	req.body.boardId = req.board.id;
-	await Group.create(req.body);
-	res.redirect(`/boards/key/${req.board.key}`);
+	console.log(req.board.id);
+	console.log('Body: ', req.body);
+	await Group.updateOne({
+		boardId: req.board.id,
+		name: 'Backlog'
+	}, {
+		$push: {
+			issues: req.body
+		}
+	});
+	res.redirect(`${req.baseUrl}`);
 });
 
 issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
 	res.render('issues/new.ejs', {
-		boardKey: req.board.key
+		boardKey: req.board.key,
+		baseUrl: req.baseUrl
 	});
 });
 
