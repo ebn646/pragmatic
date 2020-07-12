@@ -1,6 +1,6 @@
 // Dependencies
 const express = require('express');
-const Issue = require('../models/issue.js');
+const Issue = require('../models/issues.js');
 // const seed = require('../models/issueSeed.js');
 
 // Config

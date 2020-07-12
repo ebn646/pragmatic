@@ -1,6 +1,7 @@
 // Dependencies
 const express = require('express');
 const Board = require('../models/boards.js');
+const Issue = require('../models/issues.js');
 const issuesRouter = require('./issues.js');
 
 // Config
@@ -37,7 +38,11 @@ router.get('/new', isAuthenticated, (req, res) => {
 });
 
 router.delete('/:boardId', async (req, res) => {
-	await Board.findByIdAndDelete(req.params.boardId);
+	const boardId = req.params.boardId;
+	await Issue.deleteMany({
+		boardId: boardId
+	}).catch(err => console.log(err.message));
+	await Board.findByIdAndDelete(boardId).catch(err => console.log(err.message));
 	res.redirect('/boards');
 });
 
