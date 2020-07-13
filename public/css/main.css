@@ -133,3 +133,26 @@ h2 {
 	display: flex;
 	justify-content: center;
 }
+
+.form-signin {
+	width: 100%;
+	max-width: 420px;
+	padding: 15px;
+	margin: auto;
+}
+
+.form-label-group {
+	margin-bottom: 20px;
+}
+
+.form-label-group > input {
+	height: 4rem;
+}
+
+.form-header {
+	margin-bottom: 40px;
+}
+
+#sign-in {
+	margin-bottom: 10px;
+}

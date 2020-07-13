@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Login</title>
+		<%- include('../partials/head.ejs') %>
+		<link rel="stylesheet" href="/css/login.css" />
 	</head>
 	<body>
 		<main>
-			<h1>Log in to your account</h1>
-			<form action="/login" method="post">
+			<form class="form-signin" action="/login" method="post">
+				<div class="text-center mb-4">
+					<h1 class="h3 mb-3 font-weight-normal form-header">
+						Log in to your account
+					</h1>
+				</div>
+				<div class="form-label-group">
+					<input
+						class="form-control"
+						type="text"
+						id="email"
+						name="email"
+						placeholder="Enter email"
+						required
+					/>
+				</div>
+				<div class="form-label-group">
+					<input
+						class="form-control"
+						type="password"
+						id="password"
+						name="password"
+						placeholder="Enter password"
+						required
+					/>
+				</div>
 				<input
-					type="text"
-					id="email"
-					name="email"
-					placeholder="Enter email"
-					required
+					class="btn btn-lg btn-primary btn-block"
+					id="sign-in"
+					type="submit"
+					value="Sign in"
 				/>
-				<input
-					type="password"
-					id="password"
-					name="password"
-					placeholder="Enter password"
-					required
-				/>
-				<input type="submit" value="Continue" />
+				<a href="/signup">No account yet?</a>
 			</form>
-			<a href="/signup">Sign up</a>
 		</main>
 	</body>
 </html>

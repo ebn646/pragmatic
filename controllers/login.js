@@ -10,7 +10,7 @@ const loginRouter = express.Router();
 loginRouter
 	.route('/')
 	.get((req, res) => {
-		res.render('login/login.ejs');
+		res.render('login/login.ejs', {title: 'Login'});
 	})
 	.post(async (req, res) => {
 		const user = await User.findOne({email: req.body.email}).catch(err =>
