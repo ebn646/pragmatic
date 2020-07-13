@@ -23,7 +23,11 @@
 			<br>
 			<label for="issueType">
 				Issue type:
-				<input type="text" id="issueType" name="issueType" value="<%= issue.type %>">
+				<select name="issueType" id="issueType">
+					<option value="story">story</option>
+					<option value="task">task</option>
+					<option value="bug">bug</option>
+				</select>
 			</label>
 			<br>
 			<label for="reporter">
