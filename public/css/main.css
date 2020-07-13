@@ -118,3 +118,9 @@ h1 {
 h2 {
   font-size: 18px;
 }
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
