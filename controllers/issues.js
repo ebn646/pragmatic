@@ -24,7 +24,7 @@ issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	const boardId = req.board.id;
 	const groups = await Group.find({boardId: boardId});
 	const issues = await Issue.find({boardId: boardId});
-	const boardKey = req.board.key.toUpperCase();
+	const boardKey = req.board.key;
 	// Render
 	res.render('issues/index.ejs', {
 		groups: groups,
@@ -104,7 +104,7 @@ issuesRouter.post('/sprint', isAuthenticated, async (req, res) => {
 	const newIndex = group.index + 1;
 	// Create data for new group
 	const newGroup = {
-		name: `${req.board.key.toUpperCase()} Sprint ${newIndex}`,
+		name: `${req.board.key} Sprint ${newIndex}`,
 		index: newIndex,
 		boardId: boardId,
 	};

@@ -31,6 +31,7 @@ router
 	.post(isAuthenticated, async (req, res) => {
 		// Create new board
 		req.body.userId = req.session.user._id;
+		req.body.key = req.body.key.toUpperCase();
 		const board = await Board.create(req.body).catch(err =>
 			console.log(err.message)
 		);

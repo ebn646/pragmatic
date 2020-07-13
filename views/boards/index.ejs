@@ -10,13 +10,14 @@
 		<main class="main container-fluid">
 			<h1 class="page-header">Boards</h1>
 
+			<% if (boards.length > 0) { %>
 			<table class="table">
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>Key</th>
 						<th>Created At</th>
-						<th></th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,6 +38,7 @@
 					<% }) %>
 				</tbody>
 			</table>
+			<% } %>
 
 			<a href="/boards/new">+ Create board</a>
 		</main>
