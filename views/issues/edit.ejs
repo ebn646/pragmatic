@@ -23,9 +23,12 @@
 			<label for="type">
 				Issue type
 				<select name="type" id="type">
-					<option value="story">Story</option>
-					<option value="task">Task</option>
-					<option value="bug">Bug</option>
+					<% const types = ['Story', 'Task', 'Bug', 'Epic'] %> <%
+					types.forEach(type => { %>
+					<option value="<%= type %>" <% if (type == issue.type) { %> selected <% } %>>
+						<%= type %>
+					</option>
+					<% }) %>
 				</select>
 			</label>
 			<br>
@@ -58,14 +61,16 @@
 			<br>
 			<label for="epic">
 				Epic:
-				<input type="text" id="epic" name="epic" value="<%= issue.storyPoints %>">
+				<input type="text" id="epic" name="epic">
 			</label>
 			<br>
 			<label for="sprint">
 				Sprint:
 				<select name="sprint" id="sprint">
 					<% groups.forEach(group => { %>
-					<option value="<%= group.name %>"><%= group.name %></option>
+					<option value="<%= group.name %>" <% if (group.name == currentGroup.name) { %> selected <% } %>>
+						<%= group.name %>
+					</option>
 					<% }) %>
 				</select>
 			</label>

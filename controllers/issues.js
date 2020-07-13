@@ -110,12 +110,14 @@ issuesRouter
 issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const issue = await Issue.findById(req.params.id);
+	const currentGroup = await Group.findById(issue.groupId);
 	const groups = await Group.find({boardId: req.board.id});
 	// Render
 	res.render('issues/edit.ejs', {
 		issue: issue,
 		groups: groups,
 		baseUrl: req.baseUrl,
+		currentGroup: currentGroup,
 	});
 });
 
