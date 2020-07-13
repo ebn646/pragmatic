@@ -23,8 +23,12 @@ Routes
 issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const boardId = req.board.id;
-	const groups = await Group.find({ boardId: boardId });
-	const issues = await Issue.find({ boardId: boardId });
+	const groups = await Group.find({
+		boardId: boardId
+	});
+	const issues = await Issue.find({
+		boardId: boardId
+	});
 	const boardKey = req.board.key.toUpperCase();
 	// Render
 	res.render('issues/index.ejs', {
@@ -39,7 +43,10 @@ issuesRouter.get('/', isAuthenticated, async (req, res) => {
 issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const boardId = req.board.id;
-	const backlog = await Group.findOne({name: 'Backlog', boardId: boardId});
+	const backlog = await Group.findOne({
+		name: 'Backlog',
+		boardId: boardId
+	});
 	// Add missing required fields
 	req.body.boardId = boardId;
 	req.body.groupId = backlog._id;
@@ -70,7 +77,10 @@ issuesRouter.route('/issues/:id')
 	// Update route
 	.put(isAuthenticated, async (req, res) => {
 		// Obtain group ID
-		const group = await Group.find({boardId: req.board.id, name: req.body.sprint}).lean();
+		const group = await Group.find({
+			boardId: req.board.id,
+			name: req.body.sprint
+		}).lean();
 		const groupId = group[0]._id;
 		// Add group ID field to req.body
 		req.body.groupId = groupId;
@@ -91,7 +101,9 @@ issuesRouter.route('/issues/:id')
 issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const issue = await Issue.findById(req.params.id);
-	const groups = await Group.find({boardId: req.board.id});
+	const groups = await Group.find({
+		boardId: req.board.id
+	});
 	// Render
 	res.render('issues/edit.ejs', {
 		issue: issue,
@@ -105,7 +117,9 @@ issuesRouter.post('/sprint', isAuthenticated, async (req, res) => {
 	// Get relevant variables
 	const boardId = req.board.id;
 	// Get current largest index
-	const group = await Group.findOne({boardId: boardId}).sort('-index');
+	const group = await Group.findOne({
+		boardId: boardId
+	}).sort('-index');
 	const newIndex = group.index + 1;
 	// Create data for new group
 	const newGroup = {
