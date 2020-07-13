@@ -1,4 +1,7 @@
 $(() => {
+	// Add tooltip functionality
+	$('.icon').tooltip();
+
 	// Clicking on issue row takes user to show page
 	$('tr').click((event) => {
 		const $row = $(event.currentTarget);
