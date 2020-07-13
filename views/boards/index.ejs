@@ -6,16 +6,39 @@
 	<body>
 		<header>
 			<%- include('../partials/nav.ejs') %>
-			<h1>Boards</h1>
 		</header>
-		<main>
-			<% boards.forEach(board => { %>
-			<li><a href="/boards/_<%= board.key %>"><%= board.name %></a></li>
-			<form action="/boards/<%= board._id %>?_method=DELETE" method="post">
-				<input type="submit" value="Delete" />
-			</form>
-			<% }) %>
-			<a href="/boards/new">Create board</a>
+		<main class="main container-fluid">
+			<h1 class="page-header">Boards</h1>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Key</th>
+						<th>Created At</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% boards.forEach(board => { %>
+					<tr class="board-row">
+						<td><%= board.name %></td>
+						<td class="key"><%= board.key %></td>
+						<td><%= board.createdAt %></td>
+						<td>
+							<form
+								action="/boards/<%= board._id %>?_method=DELETE"
+								method="post"
+							>
+								<input class="btn btn-link" type="submit" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<% }) %>
+				</tbody>
+			</table>
+
+			<a href="/boards/new">+ Create board</a>
 		</main>
 	</body>
 </html>
