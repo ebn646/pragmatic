@@ -7,18 +7,18 @@ import User from '../models/users.js';
 const loginRouter = express.Router();
 
 // Routers
-loginRouter.route('/')
+loginRouter
+	.route('/')
 	.get((req, res) => {
 		res.render('login/login.ejs');
 	})
 	.post(async (req, res) => {
-		const user = await User.findOne({
-			email: req.body.email
-		}).catch(
-			err => console.log(err.message)
+		const user = await User.findOne({email: req.body.email}).catch(err =>
+			console.log(err.message)
 		);
-		const passwordMatches = user ?
-			bcrypt.compareSync(req.body.password, user.password) : false;
+		const passwordMatches = user
+			? bcrypt.compareSync(req.body.password, user.password)
+			: false;
 
 		if (user && passwordMatches) {
 			req.session.user = user;
