@@ -70,7 +70,11 @@
 									<img src="/images/<%= issue.priority %>.svg" alt="<%= issue.priority %>" title="<%= issue.priority %>" width="16" height="16">
 								</div>
 							</td>
-							<td><%= issue.storyPoints %></td>
+							<td>
+								<div class="story-points">
+									<%= issue.storyPoints %>
+								</div>
+							</td>
 						</tr>
 						<% }) %>
 					</table>
