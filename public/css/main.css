@@ -158,9 +158,14 @@ h2 {
 }
 
 #sign-in-btn {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 #login-page {
 	background-color: #fafbfc;
+}
+
+#sign-up-link {
+	display: block;
+	text-align: center;
 }
