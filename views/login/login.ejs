@@ -2,9 +2,8 @@
 <html lang="en">
 	<head>
 		<%- include('../partials/head.ejs') %>
-		<link rel="stylesheet" href="/css/login.css" />
 	</head>
-	<body>
+	<body id="login-page">
 		<main>
 			<form class="form-signin" action="/login" method="post">
 				<div class="text-center mb-4">
@@ -34,7 +33,7 @@
 				</div>
 				<input
 					class="btn btn-lg btn-primary btn-block"
-					id="sign-in"
+					id="sign-in-btn"
 					type="submit"
 					value="Sign in"
 				/>

@@ -138,7 +138,11 @@ h2 {
 	width: 100%;
 	max-width: 420px;
 	padding: 15px;
+	padding-bottom: 40px;
 	margin: auto;
+	border-radius: 5px;
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
 }
 
 .form-label-group {
@@ -153,6 +157,10 @@ h2 {
 	margin-bottom: 40px;
 }
 
-#sign-in {
+#sign-in-btn {
 	margin-bottom: 10px;
+}
+
+#login-page {
+	background-color: #fafbfc;
 }
