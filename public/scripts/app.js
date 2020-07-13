@@ -15,4 +15,9 @@ $(() => {
 		const boardKey = $row.children('.key').text();
 		window.location.href += `/_${boardKey}`;
 	});
+
+	$('.trash-icon').click(event => {
+		const $icon = $(event.currentTarget);
+		$icon.parent().children('form').submit();
+	});
 });
