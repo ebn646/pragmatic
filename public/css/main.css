@@ -157,16 +157,17 @@ h2 {
 	margin-bottom: 40px;
 }
 
-#sign-in-btn {
+#sign-in-btn,
+#sign-up-btn {
 	margin-bottom: 20px;
 }
 
-#login-page {
+#session-page {
 	background-color: #fafbfc;
 }
 
-#sign-up-link {
+#sign-up-link,
+#sign-in-link {
 	display: block;
 	text-align: center;
 }
-

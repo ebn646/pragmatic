@@ -10,7 +10,7 @@ const signupRouter = express.Router();
 signupRouter
 	.route('/')
 	.get((req, res) => {
-		res.render('signup/signup.ejs');
+		res.render('signup/signup.ejs', {title: 'Sign up'});
 	})
 	.post(async (req, res) => {
 		req.body.password = bcrypt.hashSync(

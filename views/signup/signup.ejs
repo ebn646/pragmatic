@@ -1,50 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sign Up</title>
+		<%- include('../partials/head.ejs') %>
 	</head>
-	<body>
+	<body id="session-page">
 		<main>
-			<h1>Sign up for your account</h1>
-			<form action="/signup" method="post">
+			<form class="form-signin" action="/signup" method="post">
+				<div class="text-center mb-4">
+					<h1 class="h3 mb-3 font-weight-normal form-header">
+						Sign up for your account
+					</h1>
+				<div class="form-label-group">
+					<input
+						class="form-control"
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Enter email address"
+						required
+					/>
+				</div>
+				<div class="form-label-group">
+					<input
+						class="form-control"
+						type="text"
+						id="username"
+						name="username"
+						placeholder="Enter username"
+						required
+					/>
+				</div>
+				<div class="form-label-group">
+					<input
+						class="form-control"
+						type="text"
+						id="firstName"
+						name="firstName"
+						placeholder="Enter first name"
+						required
+					/>
+				</div>
+				<div class="form-label-group">
+					<input
+						class="form-control"
+						type="text"
+						id="lastName"
+						name="lastName"
+						placeholder="Enter last name"
+						required
+					/>
+				</div>
+				<div class="form-label-group">
+					<input
+						class="form-control"
+						type="password"
+						id="password"
+						name="password"
+						placeholder="Create password"
+						required
+					/>
+				</div>
 				<input
-					type="email"
-					id="email"
-					name="email"
-					placeholder="Enter email address"
-					required
+					class="btn btn-lg btn-primary btn-block"
+					id="sign-up-btn"
+					type="submit"
+					value="Sign up"
 				/>
-				<input
-					type="text"
-					id="username"
-					name="username"
-					placeholder="Enter username"
-					required
-				/>
-				<input
-					type="text"
-					id="firstName"
-					name="firstName"
-					placeholder="Enter first name"
-					required
-				/>
-				<input
-					type="text"
-					id="lastName"
-					name="lastName"
-					placeholder="Enter last name"
-					required
-				/>
-				<input
-					type="password"
-					id="password"
-					name="password"
-					placeholder="Create password"
-					required
-				/>
-				<input type="submit" value="Sign up" />
+				<a href="/login" id="sign-in-link">Already have an account? Sign in here.</a>
 			</form>
 		</main>
 	</body>
