@@ -13,7 +13,7 @@ const issueSchema = new mongoose.Schema({
 	},
 	type: {
 		type: String,
-		default: 'user story'
+		default: 'story'
 	},
 	reporter: {
 		type: String,
