@@ -69,7 +69,7 @@ body {
  */
 
 .main {
-  padding: 20px;
+  padding: 27px;
 }
 
 @media (min-width: 768px) {
@@ -105,4 +105,16 @@ tr:hover {
 
 .group {
   margin-bottom: 40px;
+}
+
+.group>table {
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
 }
