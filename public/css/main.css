@@ -171,3 +171,16 @@ h2 {
 	display: block;
 	text-align: center;
 }
+
+.form-input {
+	margin-top: 20px;
+	max-width: 600px;
+}
+
+.short {
+	max-width: 100px;
+}
+
+.shorter {
+	max-width: 70px;
+}

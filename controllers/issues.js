@@ -75,7 +75,11 @@ issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 // New route
 issuesRouter.get('/issues/new', isAuthenticated, (req, res) => {
 	// Render new view
-	res.render('issues/new.ejs', {boardKey: req.board.key, baseUrl: req.baseUrl});
+	res.render('issues/new.ejs', {
+		boardKey: req.board.key,
+		baseUrl: req.baseUrl,
+		title: 'New issue',
+	});
 });
 
 issuesRouter
