@@ -2,6 +2,7 @@
 import express from 'express';
 import Group from '../models/groups.js';
 import Issue from '../models/issues.js';
+import issueSeed from '../models/issueSeed.js';
 
 // Config
 const issuesRouter = express.Router();
@@ -18,6 +19,23 @@ const isAuthenticated = (req, res, next) => {
 /*
 Routes
 */
+// Seed route (for testing purposes)
+issuesRouter.get('/seed', isAuthenticated, async (req, res) => {
+	// Get backlog information
+	const backlog = await Group.findOne({name: 'Backlog', boardId: req.board.id});
+	// Append backlog ID to issue seed
+	issueSeed.forEach(issue => {
+		issue.groupId = backlog._id;
+		issue.boardId = req.board.id;
+	});
+	// Delete current issues
+	await Issue.deleteMany({boardId: req.board.id});
+	// Create new issues in current board
+	await Issue.create(issueSeed);
+	// Redirect
+	res.redirect(req.baseUrl);
+});
+
 // Index route
 issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	// Get relevant variables
