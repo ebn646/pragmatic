@@ -91,3 +91,18 @@ tr:hover {
   font-weight: 300;
   color: gray;
 }
+
+.my-sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.my-sub-header>h2, .my-sub-header>form{
+  margin: 0;
+}
+
+.group {
+  margin-bottom: 40px;
+}
