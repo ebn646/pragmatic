@@ -69,7 +69,14 @@ issuesRouter.route('/issues/:id')
 	})
 	// Update route
 	.put(isAuthenticated, async (req, res) => {
+		// Obtain group ID
+		const group = await Group.find({boardId: req.board.id, name: req.body.sprint}).lean();
+		const groupId = group[0]._id;
+		// Add group ID field to req.body
+		req.body.groupId = groupId;
+		// Update database
 		await Issue.findByIdAndUpdate(req.params.id, req.body);
+		// Redirect
 		res.redirect(req.baseUrl);
 	})
 	// Delete route
@@ -82,9 +89,13 @@ issuesRouter.route('/issues/:id')
 
 // Edit route
 issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
+	// Get relevant variables
 	const issue = await Issue.findById(req.params.id);
+	const groups = await Group.find({boardId: req.board.id});
+	// Render
 	res.render('issues/edit.ejs', {
 		issue: issue,
+		groups: groups,
 		baseUrl: req.baseUrl
 	});
 });

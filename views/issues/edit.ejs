@@ -63,6 +63,15 @@
 				<input type="text" id="epic" name="epic" value="<%= issue.storyPoints %>">
 			</label>
 			<br>
+			<label for="sprint">
+				Sprint:
+				<select name="sprint" id="sprint">
+					<% groups.forEach(group => { %>
+					<option value="<%= group.name %>"><%= group.name %></option>
+					<% }) %>
+				</select>
+			</label>
+			<br>
 			<input type="submit">
 		</form>
 	</main>
