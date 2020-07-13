@@ -36,6 +36,12 @@ issuesRouter.get('/', isAuthenticated, async (req, res) => {
 
 // Create issue route
 issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
+	// Delete blank fields
+	for (const key in req.body) {
+		if (!req.body[key]) {
+			delete req.body[key];
+		}
+	}
 	// Get relevant variables
 	const boardId = req.board.id;
 	const backlog = await Group.findOne({name: 'Backlog', boardId: boardId});
@@ -43,7 +49,7 @@ issuesRouter.post('/issues', isAuthenticated, async (req, res) => {
 	req.body.boardId = boardId;
 	req.body.groupId = backlog._id;
 	// Create new issue and assign to backlog group
-	await Issue.create(req.body);
+	await Issue.create(req.body).catch(err => res.send(err.message));
 	// Redirect
 	res.redirect(req.baseUrl);
 });

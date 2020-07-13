@@ -27,7 +27,14 @@
 				<br />
 				<label for="type">
 					Issue type:
-					<input type="text" id="type" name="type" value="story" />
+					<select name="type" id="type">
+						<% const types = ['Story', 'Task', 'Bug', 'Epic'] %> <%
+						types.forEach(type => { %>
+						<option value="<%= type %>">
+							<%= type %>
+						</option>
+						<% }) %>
+					</select>
 				</label>
 				<br />
 				<label for="reporter">
@@ -42,12 +49,19 @@
 				<br />
 				<label for="priority">
 					Priority:
-					<input type="text" id="priority" name="priority" value="medium" />
+					<select name="priority" id="priority">
+						<% const priorities = ['highest', 'high', 'medium', 'low', 'lowest'] %> <%
+						priorities.forEach(priority => { %>
+						<option value="<%= priority %>" <% if (priority == 'medium') { %> selected <% } %>>
+							<%= priority %>
+						</option>
+						<% }) %>
+					</select>
 				</label>
 				<br />
 				<label for="storyPoints">
 					Story points:
-					<input type="number" id="storyPoints" name="storyPoints" />
+					<input type="number" id="storyPoints" name="storyPoints" min="0"/>
 				</label>
 				<br />
 				<label for="epic">
