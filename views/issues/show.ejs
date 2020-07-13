@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Issues</title>
+		<%- include('../partials/head.ejs') %>
 	</head>
 	<body>
-		<header>
-			<h1>Issues</h1>
-		</header>
-		<main>
+		<%- include('../partials/nav.ejs') %>
+		<main class="main">
+			<h1><%= issue.title %></h1>
 			<a href="<%= baseUrl %>">Back</a>
-			<h2><%= issue.title %></h2>
-			<p>Description: <%= issue.description %></p>
-			<p>Issue type: <%= issue.type %></p>
-			<p>Reporter: <%= issue.reporter %></p>
-			<p>Assignee: <%= issue.assignee %></p>
-			<p>Priority: <%= issue.priority %></p>
-			<p>Story points: <%= issue.storyPoints %></p>
-			<p>Epic: <%= issue.epic %></p>
-			<p>Project: <%= issue.project %></p>
-			<a href="<%= baseUrl %>/issues/<%= issue._id %>/edit">Edit</a>
+
+			<h3>Issue type</h3>
+			<p><%= issue.type %></p>
+
+			<h3>Priority</h3>
+			<p><%= issue.priority %></p>
+
+			<h3>Story points</h3>
+			<p><%= issue.storyPoints %></p>
+
+			<h3>Sprint</h3>
+			<p><%= groupName %></p>
+
+			<a
+				class="btn btn-primary my-btn"
+				href="<%= baseUrl %>/issues/<%= issue._id %>/edit"
+				>Edit</a
+			>
 			<form
 				action="<%= baseUrl %>/issues/<%= issue._id %>?_method=DELETE"
 				method="post"
 			>
-				<input type="submit" value="Delete" />
+				<input class="btn btn-danger my-btn" type="submit" value="Delete" />
 			</form>
 		</main>
 	</body>

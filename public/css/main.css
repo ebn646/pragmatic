@@ -119,6 +119,10 @@ h2 {
 	font-size: 18px;
 }
 
+h3 {
+	font-size: 16px;
+}
+
 .icon {
 	display: flex;
 	justify-content: center;
@@ -183,4 +187,8 @@ h2 {
 
 .shorter {
 	max-width: 70px;
+}
+
+.my-btn {
+	margin-top: 15px;
 }

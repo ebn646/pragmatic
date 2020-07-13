@@ -86,8 +86,20 @@ issuesRouter
 	.route('/issues/:id')
 	// Show route
 	.get(isAuthenticated, async (req, res) => {
-		const issue = await Issue.findById(req.params.id);
-		res.render('issues/show.ejs', {issue: issue, baseUrl: req.baseUrl});
+		// Get relevant variables
+		const issue = await Issue.findById(req.params.id).catch(err =>
+			res.send(err.message)
+		);
+		const group = await Group.findById(issue.groupId).catch(err =>
+			res.send(err.message)
+		);
+		// Render
+		res.render('issues/show.ejs', {
+			issue: issue,
+			baseUrl: req.baseUrl,
+			title: `${req.board.key} issues`,
+			groupName: group.name,
+		});
 	})
 	// Update route
 	.put(isAuthenticated, async (req, res) => {
