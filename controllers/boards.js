@@ -42,7 +42,7 @@ router
 	});
 
 router.get('/new', isAuthenticated, (req, res) => {
-	res.render('boards/new.ejs');
+	res.render('boards/new.ejs', {title: 'New board'});
 });
 
 router.delete('/:boardId', async (req, res) => {

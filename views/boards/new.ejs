@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>New Issue</title>
+		<%- include('../partials/head.ejs') %>
 	</head>
 	<body>
-		<header>
+		<%- include('../partials/nav.ejs') %>
+		<main class="main">
 			<h1>New board</h1>
-		</header>
-		<main>
 			<a href="#" onclick="history.go(-1)">Back</a>
-			<form action="/boards" method="post">
-				<label for="name">
-					Name
-					<input type="text" id="name" name="name" />
-				</label>
-				<br />
-				<label for="key">
-					Key
-					<input type="text" id="key" name="key" />
-				</label>
-				<br />
-				<input type="submit" value="Create board" />
+			<form class="form-input" action="/boards" method="post">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input type="text" class="form-control" id="name" name="name" required/>
+				</div>
+				<div class="form-group">
+					<label for="key">Key</label>
+					<input type="text" class="form-control" id="key" name="key" required/>
+				</div>
+				<input class="btn btn-primary" type="submit" value="Create board" />
 			</form>
 		</main>
 	</body>
