@@ -65,7 +65,11 @@
 								</div>
 							</td>
 							<td><%= issue.title %></td>
-							<td><%= issue.priority %></td>
+							<td>
+								<div class="icon">
+									<img src="/images/<%= issue.priority %>.svg" alt="<%= issue.priority %>" title="<%= issue.priority %>" width="16" height="16">
+								</div>
+							</td>
 							<td><%= issue.storyPoints %></td>
 						</tr>
 						<% }) %>
