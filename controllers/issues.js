@@ -64,11 +64,11 @@ issuesRouter
 	// Update route
 	.put(isAuthenticated, async (req, res) => {
 		// Obtain group ID
-		const group = await Group.find({
+		const group = await Group.findOne({
 			boardId: req.board.id,
 			name: req.body.sprint,
-		}).lean();
-		const groupId = group[0]._id;
+		});
+		const groupId = group._id;
 		// Add group ID field to req.body
 		req.body.groupId = groupId;
 		// Update database
