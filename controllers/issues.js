@@ -122,6 +122,7 @@ issuesRouter.get('/issues/:id/edit', isAuthenticated, async (req, res) => {
 		groups: groups,
 		baseUrl: req.baseUrl,
 		currentGroup: currentGroup,
+		title: 'Edit issue',
 	});
 });
 

@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Edit Issue</title>
+	<%- include('../partials/head.ejs') %>
 </head>
 <body>
-	<header>
+	<%- include('../partials/nav.ejs') %>
+	<main class="main">
 		<h1>Edit Issue</h1>
-	</header>
-	<main>
 		<a href="#" onclick="history.go(-1)">Back</a>
-		<form action="<%= baseUrl %>/issues/<%= issue._id %>?_method=PUT" method="post">
-			<input type="text" id="title" name="title" placeholder="What needs to be done?" required
-				value="<%= issue.title %>">
-			<br>
-			<label for="description">
-				Description:
-				<input type="text" id="description" name="description" value="<%= issue.description %>">
-			</label>
-			<br>
-			<label for="type">
-				Issue type
-				<select name="type" id="type">
+		<form class="form-input" action="<%= baseUrl %>/issues/<%= issue._id %>?_method=PUT" method="post">
+
+			<div class="form-group">
+				<label for="title">What needs to be done?</label>
+				<input type="text" class="form-control" id="title" name="title" value="<%= issue.title %>" required>
+			</div>
+
+			<div class="form-group">
+				<label for="type">Issue type</label>
+				<select name="type" class="form-control short" id="type">
 					<% const types = ['Story', 'Task', 'Bug', 'Epic'] %> <%
 					types.forEach(type => { %>
 					<option value="<%= type %>" <% if (type == issue.type) { %> selected <% } %>>
@@ -30,21 +25,11 @@
 					</option>
 					<% }) %>
 				</select>
-			</label>
-			<br>
-			<label for="reporter">
-				Reporter:
-				<input type="text" id="reporter" name="reporter" value="<%= issue.reporter %>">
-			</label>
-			<br>
-			<label for="assignee">
-				Assignee:
-				<input type="text" id="assignee" name="assignee" value="<%= issue.assignee %>">
-			</label>
-			<br>
-			<label for="priority">
-				Priority:
-				<select name="priority" id="priority">
+			</div>
+
+			<div class="form-group">
+				<label for="priority">Priority</label>
+				<select name="priority" class="form-control short" id="priority">
 					<% const priorities = ['highest', 'high', 'medium', 'low', 'lowest'] %>
 					<% priorities.forEach(priority => { %>
 					<option value="<%= priority %>" <% if (issue.priority == priority) { %> selected <% } %>>
@@ -52,30 +37,25 @@
 					</option>
 					<% }) %>
 				</select>
-			</label>
-			<br>
-			<label for="storyPoints">
-				Story points:
-				<input type="number" id="storyPoints" name="storyPoints" value="<%= issue.storyPoints %>">
-			</label>
-			<br>
-			<label for="epic">
-				Epic:
-				<input type="text" id="epic" name="epic">
-			</label>
-			<br>
-			<label for="sprint">
-				Sprint:
-				<select name="sprint" id="sprint">
+			</div>
+
+			<div class="form-group">
+				<label for="storyPoints">Story points</label>
+				<input type="number" class="form-control shorter" id="storyPoints" name="storyPoints" value="<%= issue.storyPoints %>">
+			</div>
+
+			<div class="form-group">
+				<label for="sprint">Sprint</label>
+				<select name="sprint" class="form-control short" id="sprint">
 					<% groups.forEach(group => { %>
 					<option value="<%= group.name %>" <% if (group.name == currentGroup.name) { %> selected <% } %>>
 						<%= group.name %>
 					</option>
 					<% }) %>
 				</select>
-			</label>
-			<br>
-			<input type="submit">
+			</div>
+
+			<input class="btn btn-primary" type="submit" value="Submit">
 		</form>
 	</main>
 </body>
