@@ -18,7 +18,6 @@ const isAuthenticated = (req, res, next) => {
 /*
 Routes
 */
-
 // Index route
 issuesRouter.get('/', isAuthenticated, async (req, res) => {
 	// Get relevant variables
@@ -133,6 +132,7 @@ issuesRouter.post('/sprint', isAuthenticated, async (req, res) => {
 	res.redirect(req.baseUrl);
 });
 
+// Delete sprint route
 issuesRouter.delete('/sprint/:groupId', isAuthenticated, async (req, res) => {
 	await Group.findByIdAndDelete(req.params.groupId);
 	res.redirect(req.baseUrl);
