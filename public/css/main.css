@@ -189,6 +189,10 @@ h3 {
 	max-width: 70px;
 }
 
+.normal {
+	max-width: 175px;
+}
+
 .my-btn {
 	margin-top: 15px;
 }

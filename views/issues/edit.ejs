@@ -46,7 +46,7 @@
 
 			<div class="form-group">
 				<label for="sprint">Sprint</label>
-				<select name="sprint" class="form-control short" id="sprint">
+				<select name="sprint" class="form-control normal" id="sprint">
 					<% groups.forEach(group => { %>
 					<option value="<%= group.name %>" <% if (group.name == currentGroup.name) { %> selected <% } %>>
 						<%= group.name %>
