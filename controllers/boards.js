@@ -9,12 +9,10 @@ import issuesRouter from './issues.js';
 const router = express.Router();
 
 // Authentication
+// eslint-disable-next-line consistent-return
 const isAuthenticated = (req, res, next) => {
-  if (req.session.user) {
-    return next();
-  } else {
-    res.redirect('/login');
-  }
+  if (req.session.user) return next();
+  res.redirect('/login');
 };
 
 // Routes
