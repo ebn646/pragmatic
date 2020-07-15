@@ -6,7 +6,7 @@
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-	padding-top: 50px;
+  padding-top: 50px;
 }
 
 /*
@@ -14,7 +14,7 @@ body {
  * Hide default border to remove 1px line.
  */
 .navbar-fixed-top {
-	border: 0;
+  border: 0;
 }
 
 /*
@@ -23,44 +23,44 @@ body {
 
 /* Hide for mobile, show later */
 .sidebar {
-	display: none;
+  display: none;
 }
 
 @media (min-width: 768px) {
-	.sidebar {
-		position: fixed;
-		top: 51px;
-		bottom: 0;
-		left: 0;
-		z-index: 1000;
-		display: block;
-		padding: 20px;
-		overflow-x: hidden;
-		overflow-y: auto;
-		/* Scrollable contents if viewport is shorter than content. */
-		background-color: #f5f5f5;
-		border-right: 1px solid #eee;
-	}
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
 }
 
 /* Sidebar navigation */
 .nav-sidebar {
-	margin-right: -21px;
-	/* 20px padding + 1px border */
-	margin-bottom: 20px;
-	margin-left: -20px;
+  margin-right: -21px;
+  /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
 }
 
 .nav-sidebar > li > a {
-	padding-right: 20px;
-	padding-left: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
-	color: #fff;
-	background-color: #428bca;
+  color: #fff;
+  background-color: #428bca;
 }
 
 /*
@@ -68,131 +68,131 @@ body {
  */
 
 .main {
-	padding: 27px;
+  padding: 27px;
 }
 
 @media (min-width: 768px) {
-	.main {
-		padding-right: 40px;
-		padding-left: 40px;
-	}
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
 }
 
 .main .page-header {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 tr:hover {
-	background-color: lightgray;
+  background-color: lightgray;
 }
 
 .issue-count {
-	font-weight: 300;
-	color: gray;
+  font-weight: 300;
+  color: gray;
 }
 
 .my-sub-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
 }
 
 .my-sub-header > h2,
 .my-sub-header > form {
-	margin: 0;
+  margin: 0;
 }
 
 .group {
-	margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .group > table {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 h1 {
-	font-size: 24px;
+  font-size: 24px;
 }
 
 h2 {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 h3 {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 .icon {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .story-points {
-	background-color: rgba(0, 0, 0, 0.1);
-	border-radius: 25%;
-	min-width: 15px;
-	max-width: 25px;
-	display: flex;
-	justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 25%;
+  min-width: 15px;
+  max-width: 25px;
+  display: flex;
+  justify-content: center;
 }
 
 .form-signin {
-	width: 100%;
-	max-width: 420px;
-	padding: 15px;
-	padding-bottom: 40px;
-	margin: auto;
-	border-radius: 5px;
-	background-color: white;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  padding-bottom: 40px;
+  margin: auto;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
 }
 
 .form-label-group {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-label-group > input {
-	height: 4rem;
+  height: 4rem;
 }
 
 .form-header {
-	margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 #sign-in-btn,
 #sign-up-btn {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #session-page {
-	background-color: #fafbfc;
+  background-color: #fafbfc;
 }
 
 #sign-up-link,
 #sign-in-link {
-	display: block;
-	text-align: center;
+  display: block;
+  text-align: center;
 }
 
 .form-input {
-	margin-top: 20px;
-	max-width: 600px;
+  margin-top: 20px;
+  max-width: 600px;
 }
 
 .short {
-	max-width: 100px;
+  max-width: 100px;
 }
 
 .shorter {
-	max-width: 70px;
+  max-width: 70px;
 }
 
 .normal {
-	max-width: 175px;
+  max-width: 175px;
 }
 
 .my-btn {
-	margin-top: 15px;
+  margin-top: 15px;
 }

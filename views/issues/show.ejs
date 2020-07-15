@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<%- include('../partials/head.ejs') %>
-	</head>
-	<body>
-		<%- include('../partials/nav.ejs') %>
-		<main class="main">
-			<h1><%= issue.title %></h1>
-			<a href="<%= baseUrl %>">Back</a>
+  <head>
+    <%- include('../partials/head.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <main class="main">
+      <h1><%= issue.title %></h1>
+      <a href="<%= baseUrl %>">Back</a>
 
-			<h3>Issue type</h3>
-			<p><%= issue.type %></p>
+      <h3>Issue type</h3>
+      <p><%= issue.type %></p>
 
-			<h3>Priority</h3>
-			<p><%= issue.priority %></p>
+      <h3>Priority</h3>
+      <p><%= issue.priority %></p>
 
-			<h3>Story points</h3>
-			<p><%= issue.storyPoints %></p>
+      <h3>Story points</h3>
+      <p><%= issue.storyPoints %></p>
 
-			<h3>Sprint</h3>
-			<p><%= groupName %></p>
+      <h3>Sprint</h3>
+      <p><%= groupName %></p>
 
-			<a
-				class="btn btn-primary my-btn"
-				href="<%= baseUrl %>/issues/<%= issue._id %>/edit"
-				>Edit</a
-			>
-			<form
-				action="<%= baseUrl %>/issues/<%= issue._id %>?_method=DELETE"
-				method="post"
-			>
-				<input class="btn btn-danger my-btn" type="submit" value="Delete" />
-			</form>
-		</main>
-	</body>
+      <a
+        class="btn btn-primary my-btn"
+        href="<%= baseUrl %>/issues/<%= issue._id %>/edit"
+        >Edit</a
+      >
+      <form
+        action="<%= baseUrl %>/issues/<%= issue._id %>?_method=DELETE"
+        method="post"
+      >
+        <input class="btn btn-danger my-btn" type="submit" value="Delete" />
+      </form>
+    </main>
+  </body>
 </html>

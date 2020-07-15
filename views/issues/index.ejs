@@ -1,105 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<%- include('../partials/head.ejs') %>
-	</head>
-	<body>
-		<%- include('../partials/nav.ejs') %>
-		<main class="container-fluid">
-			<div class="row">
-				<div class="col-sm-3 col-md-2 sidebar">
-					<ul class="nav nav-sidebar">
-						<li class="active">
-							<a href="">
-								Backlog
-								<span class="sr-only">(current)</span>
-							</a>
-						</li>
-						<li><a href="">Issues</a></li>
-						<li><a href="">Sprints</a></li>
-					</ul>
-				</div>
+  <head>
+    <%- include('../partials/head.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <main class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active">
+              <a href="">
+                Backlog
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li><a href="">Issues</a></li>
+            <li><a href="">Sprints</a></li>
+          </ul>
+        </div>
 
-				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					<h1 class="page-header">Backlog</h1>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Backlog</h1>
 
-					<% groups.forEach(group => { %> <% const groupIssues =
-					issues.filter(issue => String(issue.groupId) == String(group._id)) %>
-					<div class="group">
-						<div class="sub-header my-sub-header">
-							<h2>
-								<%= group.name %>
-								<span class="issue-count">
-									<%= groupIssues.length %> <%= groupIssues.length != 1 ?
-									'issues' : 'issue' %>
-								</span>
-							</h2>
+          <% groups.forEach(group => { %> <% const groupIssues =
+          issues.filter(issue => String(issue.groupId) == String(group._id)) %>
+          <div class="group">
+            <div class="sub-header my-sub-header">
+              <h2>
+                <%= group.name %>
+                <span class="issue-count">
+                  <%= groupIssues.length %> <%= groupIssues.length != 1 ?
+                  'issues' : 'issue' %>
+                </span>
+              </h2>
 
-							<span class="sprint-action">
-								<% if (group.name == 'Backlog') { %>
-								<form action="<%= baseUrl %>/sprint" method="post">
-									<input
-										type="submit"
-										class="btn btn-light"
-										value="Create sprint"
-									/>
-								</form>
-								<% } else { %>
-								<form
-									action="<%= baseUrl %>/sprint/<%= group._id %>?_method=DELETE"
-									method="post"
-								>
-									<input
-										type="submit"
-										class="btn btn-light"
-										value="Delete sprint"
-									/>
-								</form>
-								<% } %>
-							</span>
-						</div>
+              <span class="sprint-action">
+                <% if (group.name == 'Backlog') { %>
+                <form action="<%= baseUrl %>/sprint" method="post">
+                  <input
+                    type="submit"
+                    class="btn btn-light"
+                    value="Create sprint"
+                  />
+                </form>
+                <% } else { %>
+                <form
+                  action="<%= baseUrl %>/sprint/<%= group._id %>?_method=DELETE"
+                  method="post"
+                >
+                  <input
+                    type="submit"
+                    class="btn btn-light"
+                    value="Delete sprint"
+                  />
+                </form>
+                <% } %>
+              </span>
+            </div>
 
-						<table class="table">
-							<% groupIssues.forEach(issue => { %>
-							<tr class="issue-row">
-								<td class="hidden id"><%= issue._id %></td>
-								<td>
-									<div class="icon">
-										<img
-											src="/images/<%= issue.type.toLowerCase() %>.svg"
-											alt="<%= issue.type %>"
-											title="<%= issue.type %>"
-										/>
-									</div>
-								</td>
-								<td><%= issue.title %></td>
-								<td>
-									<div class="icon">
-										<img
-											src="/images/<%= issue.priority %>.svg"
-											alt="<%= issue.priority %>"
-											title="<%= issue.priority %>"
-											width="16"
-											height="16"
-										/>
-									</div>
-								</td>
-								<td>
-									<div class="story-points">
-										<%= issue.storyPoints %>
-									</div>
-								</td>
-							</tr>
-							<% }) %>
-						</table>
+            <table class="table">
+              <% groupIssues.forEach(issue => { %>
+              <tr class="issue-row">
+                <td class="hidden id"><%= issue._id %></td>
+                <td>
+                  <div class="icon">
+                    <img
+                      src="/images/<%= issue.type.toLowerCase() %>.svg"
+                      alt="<%= issue.type %>"
+                      title="<%= issue.type %>"
+                    />
+                  </div>
+                </td>
+                <td><%= issue.title %></td>
+                <td>
+                  <div class="icon">
+                    <img
+                      src="/images/<%= issue.priority %>.svg"
+                      alt="<%= issue.priority %>"
+                      title="<%= issue.priority %>"
+                      width="16"
+                      height="16"
+                    />
+                  </div>
+                </td>
+                <td>
+                  <div class="story-points">
+                    <%= issue.storyPoints %>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </table>
 
-						<% if (group.name == 'Backlog') { %>
-						<a href="<%= baseUrl %>/issues/new">+ Create issue</a>
-						<% } %>
-					</div>
-					<% }) %>
-				</div>
-			</div>
-		</main>
-	</body>
+            <% if (group.name == 'Backlog') { %>
+            <a href="<%= baseUrl %>/issues/new">+ Create issue</a>
+            <% } %>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

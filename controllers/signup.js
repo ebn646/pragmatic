@@ -8,18 +8,18 @@ const signupRouter = express.Router();
 
 // Routers
 signupRouter
-	.route('/')
-	.get((req, res) => {
-		res.render('signup/signup.ejs', {title: 'Sign up'});
-	})
-	.post(async (req, res) => {
-		req.body.password = bcrypt.hashSync(
-			req.body.password,
-			bcrypt.genSaltSync(10)
-		);
-		await User.create(req.body).catch(err => console.log(err.message));
-		res.redirect('/');
-	});
+  .route('/')
+  .get((req, res) => {
+    res.render('signup/signup.ejs', { title: 'Sign up' });
+  })
+  .post(async (req, res) => {
+    req.body.password = bcrypt.hashSync(
+      req.body.password,
+      bcrypt.genSaltSync(10)
+    );
+    await User.create(req.body).catch((err) => console.log(err.message));
+    res.redirect('/');
+  });
 
 // Export
 export default signupRouter;
